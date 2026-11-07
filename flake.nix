@@ -15,7 +15,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    pi.url = "github:earendil-works/pi/v1.4.0";
+    pi.url = "github:earendil-works/pi/v1.5.0";
 
     hermes-agent = {
       url = "github:NousResearch/hermes-agent/v0.23.0";
