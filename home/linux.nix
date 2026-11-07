@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home.username = "valentin";
@@ -7,6 +7,22 @@
   # Compatibility baseline for this Home Manager configuration.
   # This is not the Nixpkgs version and should generally stay fixed later.
   home.stateVersion = "26.05";
+
+  home.packages = with pkgs; [ podman ];
+
+  xdg.configFile."containers/registries.conf".text = ''
+    unqualified-search-registries = ["docker.io"]
+    short-name-mode = "disabled"
+  '';
+  xdg.configFile."containers/registries.conf.d/shortnames.conf".text = "";
+  xdg.configFile."containers/storage.conf".text = ''
+    [storage]
+    runroot = "$XDG_RUNTIME_DIR/containers"
+    rootless_storage_path = "$HOME/.local/share/containers/storage"
+  '';
+
+  home.file.".config/systemd/user/podman.service".source = "${pkgs.podman}/share/systemd/user/podman.service";
+  home.file.".config/systemd/user/podman.socket".source = "${pkgs.podman}/share/systemd/user/podman.socket";
 
   programs.zsh.shellAliases = {
     k = "kubectl";
