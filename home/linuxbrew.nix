@@ -18,6 +18,7 @@
       "crane"
       "diffoscope"
       "fluxcd/tap/flux"
+      "gitleaks"
       "helm"
       "hashicorp/tap/terraform"
       "herdr"

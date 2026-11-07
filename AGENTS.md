@@ -5,6 +5,7 @@ This repository is a Nix flake for a Linux (`x86_64-linux`) Home Manager setup. 
 ## Workflow
 
 - Work directly on `main` unless the user asks for a branch or worktree.
+- Don't use `superpowers` skills unless explicitly requested or for very complex tasks.
 
 ## Validate
 
