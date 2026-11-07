@@ -83,6 +83,9 @@
     }:
     let
       linuxSystem = "x86_64-linux";
+      pkgs = import nixpkgs { system = linuxSystem; };
+      ubuntuK3sConfig = pkgs.writeText "k3s-config.yaml" (builtins.readFile ./ubuntu/k3s/config.yaml);
+      ubuntuK3sService = import ./ubuntu/k3s/service.nix { inherit pkgs; };
       skillsModule = import ./home/agents/skills.nix {
         inherit
           agent-skills-nix
@@ -109,9 +112,13 @@
     in
     {
       inherit homeManagerModules;
+      packages.${linuxSystem} = {
+        k3s-ubuntu-config = ubuntuK3sConfig;
+        k3s-ubuntu-service = ubuntuK3sService;
+      };
 
       homeConfigurations.valentin = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = linuxSystem; };
+        inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home.nix

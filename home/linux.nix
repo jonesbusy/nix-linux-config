@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   home.username = "valentin";
@@ -8,7 +8,7 @@
   # This is not the Nixpkgs version and should generally stay fixed later.
   home.stateVersion = "26.05";
 
-  home.packages = with pkgs; [ podman ];
+  home.packages = with pkgs; [ podman k3s ];
 
   xdg.configFile."containers/registries.conf".text = ''
     unqualified-search-registries = ["docker.io"]
@@ -31,7 +31,14 @@
 
   home.sessionPath = [ "/usr/local/bin" ];
 
+  programs.zsh.initContent = lib.mkBefore ''
+    if [[ -z "$KUBECONFIG" ]]; then
+      export KUBECONFIG="/etc/rancher/k3s/k3s.yaml"
+    fi
+  '';
+
   home.sessionVariables = {
+    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
     DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
     TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/run/user/1000/podman/podman.sock";
   };

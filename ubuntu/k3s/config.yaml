@@ -1,0 +1,5 @@
+disable:
+  - traefik
+  - servicelb
+write-kubeconfig-group: "valentin"
+write-kubeconfig-mode: "0640"
