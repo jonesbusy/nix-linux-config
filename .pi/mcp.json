@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "aws-mcp": {
+      "enabled": false
+    }
+  }
+}

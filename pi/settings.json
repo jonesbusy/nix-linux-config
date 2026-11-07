@@ -1,0 +1,22 @@
+{
+  "lastChangelogVersion": "1.4.0",
+  "defaultProvider": "github-copilot",
+  "defaultModel": "gpt-6-luna",
+  "quietStartup": "header",
+  "packages": [
+    "npm:pi-cowboy@0.29.0",
+    "npm:pi-web-access@0.47.0",
+    "npm:pi-polish@0.1.10",
+    "npm:@dietrichgebert/ponytail@5.3.3",
+    "npm:pi-context-bar@0.1.2",
+    "npm:pi-next-prompt@0.1.3",
+    "npm:pi-away@0.1.4",
+    "npm:pi-heads-up@0.1.4",
+    "npm:pi-model-pick@0.2.0",
+    "npm:pi-background@0.4.2",
+    "git:github.com/obra/superpowers"
+  ],
+  "extensions": [
+    "+builtin:mcp"
+  ]
+}
