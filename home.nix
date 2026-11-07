@@ -15,7 +15,7 @@
     pkgs.kustomize
   ];
 
-  home.backupFileExtension = ".bak";
+  home.backupFileExtension = "bak";
 
   home.file.".git-prompt.sh" = {
     source = pkgs.fetchurl {
