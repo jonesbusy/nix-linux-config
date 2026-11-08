@@ -1,4 +1,4 @@
-{ opencode, skillsModule }:
+{ opencode }:
 { pkgs, ... }:
 let
   opencodePackage = opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
@@ -14,8 +14,6 @@ let
       opencodePackage;
 in
 {
-  imports = [ skillsModule ];
-
   programs.opencode = {
     enable = true;
     inherit package;

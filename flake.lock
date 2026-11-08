@@ -3,6 +3,7 @@
     "agent-skills-nix": {
       "inputs": {
         "nixpkgs": [
+          "nix-agents-skills",
           "nixpkgs"
         ]
       },
@@ -171,6 +172,36 @@
       "original": {
         "owner": "jbangdev",
         "repo": "agent-skills",
+        "type": "github"
+      }
+    },
+    "nix-agents-skills": {
+      "inputs": {
+        "agent-skills-nix": "agent-skills-nix",
+        "awesome-copilot": "awesome-copilot",
+        "aws-agent-toolkit": "aws-agent-toolkit",
+        "home-manager": [
+          "home-manager"
+        ],
+        "jbang-agent-skills": "jbang-agent-skills",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "openai-skills": "openai-skills",
+        "quarkus-skills": "quarkus-skills",
+        "softaworks-agent-toolkit": "softaworks-agent-toolkit"
+      },
+      "locked": {
+        "lastModified": 1794130335,
+        "narHash": "sha256-0U0c54Y2UZnT/PsMkctTVLIaKOksnyzUaGvxaYRIGX0=",
+        "owner": "jonesbusy",
+        "repo": "nix-agents-skills",
+        "rev": "2ebd37c816ab7fde981af6f07b58a57e2b065740",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jonesbusy",
+        "repo": "nix-agents-skills",
         "type": "github"
       }
     },
@@ -406,20 +437,14 @@
     },
     "root": {
       "inputs": {
-        "agent-skills-nix": "agent-skills-nix",
-        "awesome-copilot": "awesome-copilot",
-        "aws-agent-toolkit": "aws-agent-toolkit",
         "hermes-agent": "hermes-agent",
         "hermes-labs-plugins": "hermes-labs-plugins",
         "home-manager": "home-manager",
-        "jbang-agent-skills": "jbang-agent-skills",
+        "nix-agents-skills": "nix-agents-skills",
         "nix-linuxbrew": "nix-linuxbrew",
         "nixpkgs": "nixpkgs",
-        "openai-skills": "openai-skills",
         "opencode": "opencode",
-        "pi": "pi",
-        "quarkus-skills": "quarkus-skills",
-        "softaworks-agent-toolkit": "softaworks-agent-toolkit"
+        "pi": "pi"
       }
     },
     "softaworks-agent-toolkit": {

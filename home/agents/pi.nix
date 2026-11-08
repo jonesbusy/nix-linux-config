@@ -1,8 +1,6 @@
-{ pi, skillsModule }:
+{ pi }:
 { pkgs, ... }:
 {
-  imports = [ skillsModule ];
-
   home.packages = [ pi.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   home.file = {
     ".pi/agent/mcp.json".source = ../../pi/mcp.json;

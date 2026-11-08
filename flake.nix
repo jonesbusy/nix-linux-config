@@ -30,39 +30,10 @@
       flake = false;
     };
 
-    aws-agent-toolkit = {
-      url = "github:aws/agent-toolkit-for-aws";
-      flake = false;
-    };
-
-    openai-skills = {
-      url = "github:openai/skills";
-      flake = false;
-    };
-
-    quarkus-skills = {
-      url = "github:quarkusio/skills";
-      flake = false;
-    };
-
-    awesome-copilot = {
-      url = "github:github/awesome-copilot";
-      flake = false;
-    };
-
-    jbang-agent-skills = {
-      url = "github:jbangdev/agent-skills";
-      flake = false;
-    };
-
-    softaworks-agent-toolkit = {
-      url = "github:softaworks/agent-toolkit";
-      flake = false;
-    };
-
-    agent-skills-nix = {
-      url = "github:Kyure-A/agent-skills-nix";
+    nix-agents-skills = {
+      url = "github:jonesbusy/nix-agents-skills";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
   };
 
@@ -75,13 +46,7 @@
       opencode,
       hermes-agent,
       hermes-labs-plugins,
-      aws-agent-toolkit,
-      openai-skills,
-      quarkus-skills,
-      awesome-copilot,
-      jbang-agent-skills,
-      softaworks-agent-toolkit,
-      agent-skills-nix,
+      nix-agents-skills,
       ...
     }:
     let
@@ -89,23 +54,10 @@
       pkgs = import nixpkgs { system = linuxSystem; };
       ubuntuK3sConfig = pkgs.writeText "k3s-config.yaml" (builtins.readFile ./ubuntu/k3s/config.yaml);
       ubuntuK3sService = import ./ubuntu/k3s/service.nix { inherit pkgs; };
-      skillsModule = import ./home/agents/skills.nix {
-        inherit
-          agent-skills-nix
-          aws-agent-toolkit
-          nixpkgs
-          openai-skills
-          quarkus-skills
-          awesome-copilot
-          jbang-agent-skills
-          softaworks-agent-toolkit
-          ;
-      };
-      piModule = import ./home/agents/pi.nix { inherit pi skillsModule; };
-      hermesModule = import ./home/agents/hermes.nix {
-        inherit hermes-agent hermes-labs-plugins skillsModule;
-      };
-      opencodeModule = import ./home/agents/opencode.nix { inherit opencode skillsModule; };
+      skillsModule = nix-agents-skills.homeManagerModules.default;
+      piModule = import ./home/agents/pi.nix { inherit pi; };
+      hermesModule = import ./home/agents/hermes.nix { inherit hermes-agent hermes-labs-plugins; };
+      opencodeModule = import ./home/agents/opencode.nix { inherit opencode; };
       homeManagerModules = {
         skills = skillsModule;
         pi = piModule;
@@ -125,6 +77,7 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home.nix
+          homeManagerModules.skills
           homeManagerModules.pi
           homeManagerModules.hermes
           homeManagerModules.opencode

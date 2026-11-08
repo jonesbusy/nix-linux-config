@@ -1,7 +1,6 @@
 {
   hermes-agent,
   hermes-labs-plugins,
-  skillsModule,
 }:
 { lib, pkgs, ... }:
 let
@@ -17,10 +16,7 @@ let
   };
 in
 {
-  imports = [
-    hermes-agent.homeManagerModules.default
-    skillsModule
-  ];
+  imports = [ hermes-agent.homeManagerModules.default ];
 
   programs.hermes-agent = {
     enable = true;

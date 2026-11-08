@@ -16,5 +16,5 @@ This repository is a Nix flake for a Linux (`x86_64-linux`) Home Manager setup. 
 ## Source of truth
 
 - Edit tracked files under `home/`, `pi/`, `hermes/`, and `opencode/`; Home Manager links these into the user's home directory.
-- Add or change skill selections in `home/agents/skills.nix` and update its assertions in `tests/skills.nix` when selection changes.
+- Skill sources and selections live in the separate `nix-agents-skills` flake; keep this repository as a consumer and update its lock input when that flake changes.
 - Never add credentials or private agent state to the repository.
