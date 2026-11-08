@@ -11,12 +11,6 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "packageRules": [
-    {
-      "matchPackageNames": ["anomalyco/opencode"],
-      "allowedVersions": "/^2\\./"
-    }
-  ],
   "customManagers": [
     {
       "customType": "regex",
@@ -26,42 +20,6 @@
         "npm:(?<depName>(?:@[^/\"]+/)?[^@\"]+)@(?<currentValue>[^\"]+)"
       ],
       "datasourceTemplate": "npm",
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "description": "Track Pi's upstream release tag (Nix manager only updates its lock)",
-      "managerFilePatterns": ["/^flake\\.nix$/"],
-      "matchStrings": [
-        "pi\\.url\\s*=\\s*\\\"github:earendil-works/pi/(?<currentValue>v[0-9]+\\.[0-9]+\\.[0-9]+)\\\";"
-      ],
-      "depNameTemplate": "pi",
-      "packageNameTemplate": "https://github.com/earendil-works/pi.git",
-      "datasourceTemplate": "git-tags",
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "description": "Track stable OpenCode GitHub releases",
-      "managerFilePatterns": ["/^flake\\.nix$/"],
-      "matchStrings": [
-        "opencode\\s*=\\s*\\{\\s*url\\s*=\\s*\\\"github:anomalyco/opencode/v(?<currentValue>2\\.[0-9]+\\.[0-9]+)\\\";"
-      ],
-      "depNameTemplate": "opencode",
-      "packageNameTemplate": "anomalyco/opencode",
-      "datasourceTemplate": "github-releases",
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "description": "Track stable Hermes Agent GitHub releases",
-      "managerFilePatterns": ["/^flake\\.nix$/"],
-      "matchStrings": [
-        "hermes-agent\\s*=\\s*\\{\\s*url\\s*=\\s*\\\"github:NousResearch/hermes-agent/v(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)\\\";"
-      ],
-      "depNameTemplate": "hermes-agent",
-      "packageNameTemplate": "NousResearch/hermes-agent",
-      "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver"
     }
   ]

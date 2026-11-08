@@ -15,12 +15,8 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    pi.url = "github:earendil-works/pi/v1.4.0";
-
-    opencode.url = "github:anomalyco/opencode/v2.2.6";
-
-    hermes-agent = {
-      url = "github:NousResearch/hermes-agent/v0.23.0";
+    nix-agents-home = {
+      url = "github:jonesbusy/nix-agents-home";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -38,15 +34,13 @@
   };
 
   outputs =
-    inputs@{
+    {
       nixpkgs,
       home-manager,
       nix-linuxbrew,
-      pi,
-      opencode,
-      hermes-agent,
       hermes-labs-plugins,
       nix-agents-skills,
+      nix-agents-home,
       ...
     }:
     let
@@ -54,19 +48,8 @@
       pkgs = import nixpkgs { system = linuxSystem; };
       ubuntuK3sConfig = pkgs.writeText "k3s-config.yaml" (builtins.readFile ./ubuntu/k3s/config.yaml);
       ubuntuK3sService = import ./ubuntu/k3s/service.nix { inherit pkgs; };
-      skillsModule = nix-agents-skills.homeManagerModules.default;
-      piModule = import ./home/agents/pi.nix { inherit pi; };
-      hermesModule = import ./home/agents/hermes.nix { inherit hermes-agent hermes-labs-plugins; };
-      opencodeModule = import ./home/agents/opencode.nix { inherit opencode; };
-      homeManagerModules = {
-        skills = skillsModule;
-        pi = piModule;
-        hermes = hermesModule;
-        opencode = opencodeModule;
-      };
     in
     {
-      inherit homeManagerModules;
       packages.${linuxSystem} = {
         k3s-ubuntu-config = ubuntuK3sConfig;
         k3s-ubuntu-service = ubuntuK3sService;
@@ -74,13 +57,14 @@
 
       homeConfigurations.valentin = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit hermes-labs-plugins; };
         modules = [
           ./home.nix
-          homeManagerModules.skills
-          homeManagerModules.pi
-          homeManagerModules.hermes
-          homeManagerModules.opencode
+          nix-agents-skills.homeManagerModules.default
+          nix-agents-home.homeManagerModules.default
+          ./home/agents/pi.nix
+          ./home/agents/hermes.nix
+          ./home/agents/opencode.nix
           ./home/linux.nix
           nix-linuxbrew.homeManagerModules.default
           ./home/linuxbrew.nix

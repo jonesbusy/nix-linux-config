@@ -46,8 +46,8 @@ home-manager switch --rollback
 ## What it manages
 
 - Zsh, command-line tools, and Linuxbrew formulas
-- Pi, Hermes Agent, and OpenCode configuration
-- Shared agent skills
+- Pi, Hermes Agent, and OpenCode packages via `nix-agents-home`, with personal configuration kept here
+- Shared agent skills via `nix-agents-skills`
 - Linux-specific settings
 
 Edit the source files here; Home Manager links them into your home directory. Do not commit credentials.
