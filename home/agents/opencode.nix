@@ -1,16 +1,25 @@
-{ nixpkgs, skillsModule }:
+{ opencode, skillsModule }:
 { pkgs, ... }:
 let
-  # shortcut: locked nixpkgs has a stale 2.2.5 Linux hash; remove when the lock includes upstream's correction.
-  opencode = nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.opencode.overrideAttrs (old: {
-    node_modules = old.node_modules.overrideAttrs (_: {
-      outputHash = "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA=";
-    });
-  });
+  opencodePackage = opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+  # shortcut: v2.2.6 has an incorrect upstream node_modules hash; remove when upgrading to a release with a corrected hash.
+  package =
+    if opencodePackage.version == "2.2.6+dc2ffcf" then
+      opencodePackage.overrideAttrs (old: {
+        node_modules = old.node_modules.overrideAttrs (_: {
+          outputHash = "sha256-s8XswivimwgzG0wMleHee5zliDKd+UC84eAvBvzr6cI=";
+        });
+      })
+    else
+      opencodePackage;
 in
 {
   imports = [ skillsModule ];
 
-  home.packages = [ opencode ];
+  programs.opencode = {
+    enable = true;
+    inherit package;
+  };
+
   home.file.".config/opencode/opencode.json".source = ../../opencode/opencode.json;
 }

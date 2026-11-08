@@ -232,6 +232,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1790510107,
+        "narHash": "sha256-EVMNYv7hYDDD9TGVT/hIyTYgpiXA8y3m5xIEIxuGNU0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3181085bfd08663b6b9e60bc7a8395c2aaa741bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1788316716,
         "narHash": "sha256-bc7rSpXIdn9QWGNqfWcPZWOhEVF8NoeAZkWq0XWnf/k=",
         "owner": "NixOS",
@@ -283,9 +299,28 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1794005389,
+        "narHash": "sha256-6Of4/r4SKYtxMbHISu8/4yzSpCfHNGuTwfKdAKjNJnM=",
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "rev": "dc2ffcf8bf26f9e669b6aa22b95f50e12be15e06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anomalyco",
+        "ref": "v2.2.6",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "pi": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-darwin-x64": "nixpkgs-darwin-x64"
       },
       "locked": {
@@ -381,6 +416,7 @@
         "nix-linuxbrew": "nix-linuxbrew",
         "nixpkgs": "nixpkgs",
         "openai-skills": "openai-skills",
+        "opencode": "opencode",
         "pi": "pi",
         "quarkus-skills": "quarkus-skills",
         "softaworks-agent-toolkit": "softaworks-agent-toolkit"

@@ -17,6 +17,8 @@
 
     pi.url = "github:earendil-works/pi/v1.4.0";
 
+    opencode.url = "github:anomalyco/opencode/v2.2.6";
+
     hermes-agent = {
       url = "github:NousResearch/hermes-agent/v0.23.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,6 +72,7 @@
       home-manager,
       nix-linuxbrew,
       pi,
+      opencode,
       hermes-agent,
       hermes-labs-plugins,
       aws-agent-toolkit,
@@ -102,7 +105,7 @@
       hermesModule = import ./home/agents/hermes.nix {
         inherit hermes-agent hermes-labs-plugins skillsModule;
       };
-      opencodeModule = import ./home/agents/opencode.nix { inherit nixpkgs skillsModule; };
+      opencodeModule = import ./home/agents/opencode.nix { inherit opencode skillsModule; };
       homeManagerModules = {
         skills = skillsModule;
         pi = piModule;
