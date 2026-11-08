@@ -33,6 +33,9 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
 
+      - name: Check Nix formatting
+        run: nix fmt -- --ci
+
       - name: Restore/save Nix store cache
         uses: nix-community/cache-nix-action@7df957e333c1e5da7721f60227dbba6d06080569 # v7
         continue-on-error: true

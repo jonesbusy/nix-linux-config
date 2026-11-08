@@ -57,6 +57,7 @@ Edit the source files here; Home Manager links them into your home directory. Do
 Stage new or changed files before running flake commands so Nix includes them. Then run:
 
 ```sh
+nix fmt -- --ci
 nix eval --impure --file tests/skills.nix
 nix flake check --no-build
 nix build --no-link .#homeConfigurations.valentin.activationPackage

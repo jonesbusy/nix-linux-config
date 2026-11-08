@@ -8,7 +8,10 @@
   # This is not the Nixpkgs version and should generally stay fixed later.
   home.stateVersion = "26.05";
 
-  home.packages = with pkgs; [ podman k3s ];
+  home.packages = with pkgs; [
+    podman
+    k3s
+  ];
 
   xdg.configFile."containers/registries.conf".text = ''
     unqualified-search-registries = ["docker.io"]
@@ -21,8 +24,10 @@
     rootless_storage_path = "$HOME/.local/share/containers/storage"
   '';
 
-  home.file.".config/systemd/user/podman.service".source = "${pkgs.podman}/share/systemd/user/podman.service";
-  home.file.".config/systemd/user/podman.socket".source = "${pkgs.podman}/share/systemd/user/podman.socket";
+  home.file.".config/systemd/user/podman.service".source =
+    "${pkgs.podman}/share/systemd/user/podman.service";
+  home.file.".config/systemd/user/podman.socket".source =
+    "${pkgs.podman}/share/systemd/user/podman.socket";
 
   programs.zsh.shellAliases = {
     k = "kubectl";

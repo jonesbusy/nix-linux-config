@@ -50,6 +50,8 @@
       ubuntuK3sService = import ./ubuntu/k3s/service.nix { inherit pkgs; };
     in
     {
+      formatter.${linuxSystem} = pkgs.nixfmt-tree;
+
       packages.${linuxSystem} = {
         k3s-ubuntu-config = ubuntuK3sConfig;
         k3s-ubuntu-service = ubuntuK3sService;

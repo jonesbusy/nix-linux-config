@@ -10,7 +10,7 @@ This repository is a Nix flake for a Linux (`x86_64-linux`) Home Manager setup. 
 ## Validate
 
 - Stage new or modified files before flake evaluation; Nix reads Git checkout sources from tracked files. Staging is not permission to commit.
-- Run `nix eval --impure --file tests/skills.nix`, `nix flake check --no-build`, and `nix build --no-link .#homeConfigurations.valentin.activationPackage` when relevant.
+- Run `nix fmt -- --ci`, `nix eval --impure --file tests/skills.nix`, `nix flake check --no-build`, and `nix build --no-link .#homeConfigurations.valentin.activationPackage` when relevant.
 - Do not activate Home Manager or change the user's installed tools unless explicitly requested.
 
 ## Source of truth
