@@ -1,21 +1,40 @@
-# Repository guidance
+# AGENTS.md
 
-This repository is a Nix flake for a Linux (`x86_64-linux`) Home Manager setup. Keep changes consistent with the existing module structure; do not add macOS or system-level Ubuntu configuration unless requested.
+Nix flake for a standalone Home Manager setup on Linux (`x86_64-linux`), user `valentin`.
 
-## Workflow
+## Scope
 
-- Work directly on `main` unless the user asks for a branch or worktree.
-- Don't use `superpowers` skills unless explicitly requested or for very complex tasks.
+- Keep changes inside the existing module layout (`home.nix`, `home/`). Do not add macOS support.
+- System-level Ubuntu configuration lives only in `ubuntu/` and is applied by hand with `ubuntu/k3s/apply.sh`. Do not add more unless asked.
+- Work on `main` unless the user asks for a branch or worktree.
+- Use `superpowers` skills only when asked or for very complex tasks.
+
+## Where things live
+
+| Change | Edit |
+| --- | --- |
+| Shell, CLI packages, session variables | `home.nix` |
+| Podman, k3s client, Linux-only settings | `home/linux.nix` |
+| Linuxbrew taps and formulas | `home/linuxbrew.nix` |
+| Pi, Hermes Agent, OpenCode settings | `pi/`, `hermes/`, `opencode/` (linked by `home/agents/*.nix`) |
+| Reusable agent Home Manager modules | upstream `nix-agents-home` flake, not here |
+| Skill sources and selections | upstream `nix-agents-skills` flake, not here |
+
+When a `flake.lock` update changes skill selections, update the expected names in `tests/skills.nix`.
+
+Never commit credentials or private agent state. `gitleaks` runs as a pre-commit hook.
 
 ## Validate
 
-- Stage new or modified files before flake evaluation; Nix reads Git checkout sources from tracked files. Staging is not permission to commit.
-- Run `nix fmt -- --ci`, `nix eval --impure --file tests/skills.nix`, `nix flake check --no-build`, and `nix build --no-link .#homeConfigurations.valentin.activationPackage` when relevant.
-- Do not activate Home Manager or change the user's installed tools unless explicitly requested.
+Nix only sees files Git tracks, so stage new or changed files first. Staging is not permission to commit.
 
-## Source of truth
+```sh
+nix fmt -- --ci
+nix eval --impure --file tests/skills.nix
+nix flake check --no-build
+nix build --no-link .#homeConfigurations.valentin.activationPackage
+```
 
-- Edit tracked files under `home/`, `pi/`, `hermes/`, and `opencode/`; Home Manager links these into the user's home directory.
-- Skill sources and selections live in the separate `nix-agents-skills` flake; keep this repository as a consumer.
-- Reusable Pi, Hermes Agent, and OpenCode Home Manager modules live in `nix-agents-home`; keep personal agent settings and configuration files in this repository.
-- Never add credentials or private agent state to the repository.
+CI (`.github/workflows/nix-validation.yml`) runs the same steps plus `prek`.
+
+Do not run `home-manager switch`, `ubuntu/k3s/apply.sh`, or anything else that changes the user's installed tools unless explicitly asked.
