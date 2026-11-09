@@ -24,11 +24,11 @@
     "awesome-copilot": {
       "flake": false,
       "locked": {
-        "lastModified": 1793972433,
-        "narHash": "sha256-NzGLIkz7u85m1nMydq/uFAiNcnFw2DRr+jgHM33ncHc=",
+        "lastModified": 1794193096,
+        "narHash": "sha256-zknIoYpQTW7eK6L+S7uU2tSsBlOn1CMx3h5KNui5TF8=",
         "owner": "github",
         "repo": "awesome-copilot",
-        "rev": "797337f33f73e35d08d82f840e21c4b8c4932d88",
+        "rev": "00cc51d04f49148fc5681c58b944703095b2715f",
         "type": "github"
       },
       "original": {
@@ -40,16 +40,32 @@
     "aws-agent-toolkit": {
       "flake": false,
       "locked": {
-        "lastModified": 1793997249,
-        "narHash": "sha256-nDiwRRH0nOunUHYsA7SsOmcI/LZdUw+7MwYvNKMBUxM=",
+        "lastModified": 1794179440,
+        "narHash": "sha256-eI4QDoOTLleuf9I9lpjw68r2dLFcfByckodmpy//O6Y=",
         "owner": "aws",
         "repo": "agent-toolkit-for-aws",
-        "rev": "0a218f8cc13220013f72147e2e0fdbe350b34ae2",
+        "rev": "e1380e15b6b91f7c7a4e20e9357bd77828e32037",
         "type": "github"
       },
       "original": {
         "owner": "aws",
         "repo": "agent-toolkit-for-aws",
+        "type": "github"
+      }
+    },
+    "cloudflare-security-audit-skill": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789414134,
+        "narHash": "sha256-oVVACjotkHvllQGxEP8yWaEt4c3GxT0d909TUM5P3NM=",
+        "owner": "cloudflare",
+        "repo": "security-audit-skill",
+        "rev": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cloudflare",
+        "repo": "security-audit-skill",
         "type": "github"
       }
     },
@@ -191,11 +207,11 @@
         "pi": "pi"
       },
       "locked": {
-        "lastModified": 1794135120,
-        "narHash": "sha256-DRJQL7E47jloNWoHq/K43Ph06rLlufSHTvQgu/tO1FA=",
+        "lastModified": 1794161026,
+        "narHash": "sha256-FexJmZp1+w7fQAISwhnKpYd11yG8g4/rhRs9p2kQRws=",
         "owner": "jonesbusy",
         "repo": "nix-agents-home",
-        "rev": "d7df5768c92e587d0dcc6f10cd47adb1ad82e23a",
+        "rev": "215a2306e6ae43fe9eb9b9914bb0e23a7e0424f0",
         "type": "github"
       },
       "original": {
@@ -209,6 +225,7 @@
         "agent-skills-nix": "agent-skills-nix",
         "awesome-copilot": "awesome-copilot",
         "aws-agent-toolkit": "aws-agent-toolkit",
+        "cloudflare-security-audit-skill": "cloudflare-security-audit-skill",
         "home-manager": [
           "home-manager"
         ],
@@ -221,11 +238,11 @@
         "softaworks-agent-toolkit": "softaworks-agent-toolkit"
       },
       "locked": {
-        "lastModified": 1794130335,
-        "narHash": "sha256-0U0c54Y2UZnT/PsMkctTVLIaKOksnyzUaGvxaYRIGX0=",
+        "lastModified": 1794198461,
+        "narHash": "sha256-SXkH48b/liKn4zr9E96hkW8hCQM+GoHWve5COJKpdes=",
         "owner": "jonesbusy",
         "repo": "nix-agents-skills",
-        "rev": "2ebd37c816ab7fde981af6f07b58a57e2b065740",
+        "rev": "e9a4a11a0fc672f5939d8d16e819fecf70a76b4f",
         "type": "github"
       },
       "original": {
