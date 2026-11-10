@@ -22,6 +22,11 @@ Nix flake for a standalone Home Manager setup on Linux (`x86_64-linux`), user `v
 
 When a `flake.lock` update changes skill selections, update the expected names in `tests/skills.nix`.
 
+## Hermes and Patchelf upstream PRs
+
+- [Hermes Nix packaging fix (#143332)](https://github.com/NousResearch/hermes-agent/pull/143332)
+- [Patchelf LOAD-mapping fix (#672)](https://github.com/NixOS/patchelf/pull/672)
+
 Never commit credentials or private agent state. `gitleaks` runs as a pre-commit hook.
 
 ## Validate
