@@ -59,7 +59,10 @@
 
       homeConfigurations.valentin = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit hermes-labs-plugins; };
+        extraSpecialArgs = {
+          inherit hermes-labs-plugins;
+          hermes-agent = nix-agents-home.inputs.hermes-agent;
+        };
         modules = [
           ./home.nix
           nix-agents-skills.homeManagerModules.default
