@@ -4,7 +4,7 @@
   "defaultModel": "gpt-6-luna",
   "quietStartup": "header",
   "packages": [
-    "npm:pi-cowboy@0.29.0",
+    "npm:pi-cowboy@0.29.1",
     "npm:pi-web-access@0.47.0",
     "npm:pi-polish@0.1.10",
     "npm:@dietrichgebert/ponytail@5.3.3",
