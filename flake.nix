@@ -45,7 +45,14 @@
     }:
     let
       linuxSystem = "x86_64-linux";
-      pkgs = import nixpkgs { system = linuxSystem; };
+      pkgs = import nixpkgs {
+        system = linuxSystem;
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (nixpkgs.lib.getName pkg) [
+            "sonarqube-cli"
+          ];
+      };
       ubuntuK3sConfig = pkgs.writeText "k3s-config.yaml" (builtins.readFile ./ubuntu/k3s/config.yaml);
       ubuntuK3sService = import ./ubuntu/k3s/service.nix { inherit pkgs; };
     in

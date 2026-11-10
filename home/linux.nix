@@ -11,6 +11,8 @@
   home.packages = with pkgs; [
     podman
     k3s
+    sonarqube-cli
+    sonar-scanner-cli
   ];
 
   xdg.configFile."containers/registries.conf".text = ''

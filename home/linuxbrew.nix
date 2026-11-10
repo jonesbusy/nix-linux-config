@@ -34,7 +34,6 @@
       "salaboy/tap/skills-oci"
       "skopeo"
       "sofka"
-      "sonar-scanner"
       "step"
       "updatecli/updatecli/updatecli"
       "uv"
