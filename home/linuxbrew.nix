@@ -13,15 +13,8 @@
       "updatecli/updatecli"
     ];
     brews = [
-      "awscli"
-      "cosign"
-      "diffoscope"
-      "fluxcd/tap/flux"
-      "oras"
       "plugin-modernizer"
-      "prek"
       "salaboy/tap/skills-oci"
-      "uv"
     ];
     ensureCompiler = false;
   };

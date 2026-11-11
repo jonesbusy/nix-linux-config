@@ -12,7 +12,13 @@
     pkgs.ansible
     pkgs.sops
     pkgs.age
+    pkgs.awscli2
+    pkgs.cosign
+    pkgs.diffoscope
+    pkgs.fluxcd
     pkgs.kustomize
+    pkgs.oras
+    pkgs.prek
     pkgs.sofka
     pkgs.git
     pkgs.crane
@@ -29,6 +35,7 @@
     pkgs.step-cli
     pkgs.terraform
     pkgs.updatecli
+    pkgs.uv
   ];
 
   home.backupFileExtension = "bak";
