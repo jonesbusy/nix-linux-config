@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    sofka = {
+      url = "github:nklmilojevic/sofka";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +41,7 @@
   outputs =
     {
       nixpkgs,
+      sofka,
       home-manager,
       nix-linuxbrew,
       hermes-labs-plugins,
@@ -47,6 +53,7 @@
       linuxSystem = "x86_64-linux";
       pkgs = import nixpkgs {
         system = linuxSystem;
+        overlays = [ sofka.overlays.default ];
         config.allowUnfreePredicate =
           pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [

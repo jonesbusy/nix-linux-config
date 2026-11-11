@@ -21,7 +21,6 @@
       "plugin-modernizer"
       "prek"
       "salaboy/tap/skills-oci"
-      "sofka"
       "uv"
     ];
     ensureCompiler = false;

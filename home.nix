@@ -13,6 +13,7 @@
     pkgs.sops
     pkgs.age
     pkgs.kustomize
+    pkgs.sofka
     pkgs.git
     pkgs.crane
     pkgs.gitleaks
