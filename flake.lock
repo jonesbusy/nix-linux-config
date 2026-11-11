@@ -375,6 +375,19 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1793865203,
+        "narHash": "sha256-4D+5oPvxkOa6tTCWXi4jwRfmWhDXGRSrX4+eOTItLh0=",
+        "rev": "c56a87d8e41ce69bd2af57eb35dcc117a9dfca33",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.13627.c56a87d8e41c/nixexprs.tar.zst"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst"
+      }
+    },
     "openai-skills": {
       "flake": false,
       "locked": {
@@ -427,6 +440,24 @@
         "owner": "earendil-works",
         "ref": "v1.5.2",
         "repo": "pi",
+        "type": "github"
+      }
+    },
+    "plugin-modernizer": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1794411628,
+        "narHash": "sha256-r0AL741kiXVpGdVXhD4AuWBmVqxwnWQ/AFVHCZn2LIw=",
+        "owner": "jenkins-infra",
+        "repo": "plugin-modernizer-tool",
+        "rev": "de412a66c8d77bbc88c8e952b4c3ab1602bb542d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jenkins-infra",
+        "repo": "plugin-modernizer-tool",
         "type": "github"
       }
     },
@@ -508,6 +539,7 @@
         "nix-agents-skills": "nix-agents-skills",
         "nix-linuxbrew": "nix-linuxbrew",
         "nixpkgs": "nixpkgs_3",
+        "plugin-modernizer": "plugin-modernizer",
         "sofka": "sofka"
       }
     },

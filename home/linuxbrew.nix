@@ -13,7 +13,6 @@
       "updatecli/updatecli"
     ];
     brews = [
-      "plugin-modernizer"
       "salaboy/tap/skills-oci"
     ];
     ensureCompiler = false;

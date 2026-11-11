@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plugin-modernizer.url = "github:jenkins-infra/plugin-modernizer-tool";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +44,7 @@
     {
       nixpkgs,
       sofka,
+      plugin-modernizer,
       home-manager,
       nix-linuxbrew,
       hermes-labs-plugins,
@@ -63,6 +66,7 @@
       };
       ubuntuK3sConfig = pkgs.writeText "k3s-config.yaml" (builtins.readFile ./ubuntu/k3s/config.yaml);
       ubuntuK3sService = import ./ubuntu/k3s/service.nix { inherit pkgs; };
+      pluginModernizer = plugin-modernizer.packages.${linuxSystem}.plugin-modernizer;
     in
     {
       formatter.${linuxSystem} = pkgs.nixfmt-tree;
@@ -75,7 +79,7 @@
       homeConfigurations.valentin = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit hermes-labs-plugins;
+          inherit hermes-labs-plugins pluginModernizer;
           hermes-agent = nix-agents-home.inputs.hermes-agent;
         };
         modules = [

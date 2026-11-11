@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pluginModernizer, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -17,9 +17,12 @@
     pkgs.diffoscope
     pkgs.fluxcd
     pkgs.kustomize
+    pkgs.kind
+    pkgs.docker-credential-helpers
     pkgs.oras
     pkgs.prek
     pkgs.sofka
+    pluginModernizer
     pkgs.git
     pkgs.crane
     pkgs.gitleaks
