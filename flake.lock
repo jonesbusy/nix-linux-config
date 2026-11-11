@@ -206,11 +206,11 @@
         "pi": "pi"
       },
       "locked": {
-        "lastModified": 1794369621,
-        "narHash": "sha256-Lv/tKXnkQZbUFRb2ZUzkjt/GkLFRiJ/osdiW9t7dY6E=",
+        "lastModified": 1794400944,
+        "narHash": "sha256-zqYWkMbYVQ/DYkSrlCEE5oLqak4+SFcTFC5LiAGXdKM=",
         "owner": "jonesbusy",
         "repo": "nix-agents-home",
-        "rev": "b190c730f3cfd21cf00c15aea4f59abe8c7a3544",
+        "rev": "88e05ef8d9138e005fa1b9660addfddd168fe56c",
         "type": "github"
       },
       "original": {
