@@ -206,11 +206,11 @@
         "pi": "pi"
       },
       "locked": {
-        "lastModified": 1794291226,
-        "narHash": "sha256-rGxCJ84mUoiqh+yzM1AMehlPiv9FtWow3wkcHAbi/jo=",
+        "lastModified": 1794369621,
+        "narHash": "sha256-Lv/tKXnkQZbUFRb2ZUzkjt/GkLFRiJ/osdiW9t7dY6E=",
         "owner": "jonesbusy",
         "repo": "nix-agents-home",
-        "rev": "fb0fd1639ea3b886ed3fbbd94713fb1b826f413b",
+        "rev": "b190c730f3cfd21cf00c15aea4f59abe8c7a3544",
         "type": "github"
       },
       "original": {
@@ -237,11 +237,11 @@
         "softaworks-agent-toolkit": "softaworks-agent-toolkit"
       },
       "locked": {
-        "lastModified": 1794293287,
-        "narHash": "sha256-SbsdofihO5xw95EVAgkWxyk7oA4rOCfaXNh1QF2PU24=",
+        "lastModified": 1794369628,
+        "narHash": "sha256-w2c6WG6V21vS2YjJbWUjNyPVU+jdDuZI6beRMRaLyEg=",
         "owner": "jonesbusy",
         "repo": "nix-agents-skills",
-        "rev": "c83806da593d8dca390382818dbe29e68db16606",
+        "rev": "0e96da1b8a5a10efd3d103cd61789a4796da88ea",
         "type": "github"
       },
       "original": {
@@ -379,16 +379,16 @@
         "nixpkgs-darwin-x64": "nixpkgs-darwin-x64"
       },
       "locked": {
-        "lastModified": 1794265657,
-        "narHash": "sha256-G3SRvVaxOlgMY8bxl+SLAlF2+cMFQ2dBOuPo+NPKn/I=",
+        "lastModified": 1794312108,
+        "narHash": "sha256-0dKtABQqfvCLF0WOydu5rpycMqC+N8Pc9Ex4BWKElyw=",
         "owner": "earendil-works",
         "repo": "pi",
-        "rev": "dd30101cfc5b0609411dd80b6f93adbc14db14cf",
+        "rev": "b4afdddf44e059c67ccf5097e5317d913521b470",
         "type": "github"
       },
       "original": {
         "owner": "earendil-works",
-        "ref": "v1.5.1",
+        "ref": "v1.5.2",
         "repo": "pi",
         "type": "github"
       }
