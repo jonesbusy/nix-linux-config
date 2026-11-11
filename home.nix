@@ -13,6 +13,21 @@
     pkgs.sops
     pkgs.age
     pkgs.kustomize
+    pkgs.git
+    pkgs.crane
+    pkgs.gitleaks
+    pkgs.herdr
+    (pkgs.lib.hiPrio pkgs.kubectl)
+    pkgs.kubernetes-helm
+    pkgs.maven
+    pkgs.notation
+    pkgs.opentofu
+    pkgs.renovate
+    pkgs.rtk
+    pkgs.skopeo
+    pkgs.step-cli
+    pkgs.terraform
+    pkgs.updatecli
   ];
 
   home.backupFileExtension = "bak";

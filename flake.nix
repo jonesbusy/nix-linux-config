@@ -51,6 +51,7 @@
           pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
             "sonarqube-cli"
+            "terraform"
           ];
       };
       ubuntuK3sConfig = pkgs.writeText "k3s-config.yaml" (builtins.readFile ./ubuntu/k3s/config.yaml);
