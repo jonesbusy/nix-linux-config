@@ -9,10 +9,14 @@
       "fluxcd/tap"
       "hashicorp/tap"
       "jenkins-infra/tap"
+      "project-env/tap"
       "salaboy/tap"
       "updatecli/updatecli"
     ];
     brews = [
+      "jenkins-infra/tap/jv"
+      "pyenv"
+      "project-env/tap/project-env-cli"
       "salaboy/tap/skills-oci"
     ];
     ensureCompiler = false;
