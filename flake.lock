@@ -157,11 +157,11 @@
     "hermes-labs-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1794026591,
-        "narHash": "sha256-/4Zrqb2lVo9ocLKCgplo2BmKjcU+pqm/cXcnnFOOhMc=",
+        "lastModified": 1794552420,
+        "narHash": "sha256-vlGr/F6I1tEO/4qPinEqm3+jlQGo8P1e25jn0kuHdmM=",
         "owner": "NousResearch",
         "repo": "hermes-labs-plugins",
-        "rev": "51ede1f023906114ec06c216c4a7b98e8a45d672",
+        "rev": "df8f1321941125d45dde71ab20196fbeea093191",
         "type": "github"
       },
       "original": {
