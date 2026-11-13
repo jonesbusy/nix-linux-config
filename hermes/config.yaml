@@ -1,4 +1,5 @@
 _config_version: 51
+_left_core_installed: [github-copilot]
 model:
   provider: copilot
   default: gpt-6-luna
