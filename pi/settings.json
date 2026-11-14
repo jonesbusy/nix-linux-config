@@ -14,8 +14,7 @@
     "npm:pi-away@0.1.4",
     "npm:pi-heads-up@0.1.4",
     "npm:pi-model-pick@0.2.0",
-    "npm:pi-background@0.4.2",
-    "git:github.com/obra/superpowers"
+    "npm:pi-background@0.4.2"
   ],
   "extensions": [
     "+builtin:mcp"
