@@ -85,7 +85,7 @@
       homeConfigurations.valentin = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit hermes-labs-plugins pluginModernizer;
+          inherit hermes-labs-plugins pluginModernizer qmd;
           hermes-agent = nix-agents-home.inputs.hermes-agent;
         };
         modules = [
