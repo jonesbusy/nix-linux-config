@@ -11,6 +11,11 @@
 
     plugin-modernizer.url = "github:jenkins-infra/plugin-modernizer-tool";
 
+    qmd = {
+      url = "github:tobi/qmd";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +55,7 @@
       hermes-labs-plugins,
       nix-agents-skills,
       nix-agents-home,
+      qmd,
       ...
     }:
     let
@@ -86,6 +92,7 @@
           ./home.nix
           nix-agents-skills.homeManagerModules.default
           nix-agents-home.homeManagerModules.default
+          qmd.homeModules.default
           ./home/agents/pi.nix
           ./home/agents/hermes.nix
           ./home/agents/opencode.nix

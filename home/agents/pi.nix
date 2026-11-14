@@ -1,5 +1,7 @@
 { ... }:
 {
+  programs.qmd.enable = true;
+
   home.file = {
     ".pi/agent/mcp.json".source = ../../pi/mcp.json;
     ".pi/agent/settings.json".source = ../../pi/settings.json;
