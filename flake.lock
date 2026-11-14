@@ -309,11 +309,11 @@
         "softaworks-agent-toolkit": "softaworks-agent-toolkit"
       },
       "locked": {
-        "lastModified": 1794675737,
-        "narHash": "sha256-nGscCJCIqRb0heyWQMLIwSOYpJb131wjf8zWofMNT4k=",
+        "lastModified": 1794685754,
+        "narHash": "sha256-Q+ATPpj30l8Z1ZhDfgTAP7v15kzIArdzPH8V5aHoZQc=",
         "owner": "jonesbusy",
         "repo": "nix-agents-skills",
-        "rev": "3f98b0324bdb82774c20869f5bac1c95a67ccf43",
+        "rev": "4fa25e9a24d5917959a71f8ce950badb0dcbe8c0",
         "type": "github"
       },
       "original": {
