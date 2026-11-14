@@ -3,6 +3,8 @@
   "collapseChangelog": true,
   "defaultProvider": "github-copilot",
   "defaultModel": "gpt-6-luna",
+  "defaultThinkingLevel": "minimal",
+  "hideThinkingBlock": true,
   "quietStartup": "header",
   "packages": [
     "npm:pi-cowboy@0.32.1",
