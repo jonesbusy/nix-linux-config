@@ -53,6 +53,22 @@
         "type": "github"
       }
     },
+    "caveman": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794590119,
+        "narHash": "sha256-HcNc+iyIL/K4JOBBsJAS2eh0vcpW3CwL5CQMqY0LMh0=",
+        "owner": "JuliusBrussee",
+        "repo": "caveman",
+        "rev": "b4ee71d557d96e3cbc14f88fa6e953a1362865f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JuliusBrussee",
+        "repo": "caveman",
+        "type": "github"
+      }
+    },
     "cloudflare-security-audit-skill": {
       "flake": false,
       "locked": {
@@ -279,6 +295,7 @@
         "agent-skills-nix": "agent-skills-nix",
         "awesome-copilot": "awesome-copilot",
         "aws-agent-toolkit": "aws-agent-toolkit",
+        "caveman": "caveman",
         "cloudflare-security-audit-skill": "cloudflare-security-audit-skill",
         "home-manager": [
           "home-manager"
@@ -292,11 +309,11 @@
         "softaworks-agent-toolkit": "softaworks-agent-toolkit"
       },
       "locked": {
-        "lastModified": 1794455688,
-        "narHash": "sha256-fVie8Yo9TrK7EWi9+F+WVnFz4SXQmqimArCgrADt3dw=",
+        "lastModified": 1794675737,
+        "narHash": "sha256-nGscCJCIqRb0heyWQMLIwSOYpJb131wjf8zWofMNT4k=",
         "owner": "jonesbusy",
         "repo": "nix-agents-skills",
-        "rev": "8a74e8fff48beb2ee30cdff011d27313ee08c647",
+        "rev": "3f98b0324bdb82774c20869f5bac1c95a67ccf43",
         "type": "github"
       },
       "original": {

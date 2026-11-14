@@ -42,5 +42,7 @@ assert builtins.pathExists (
   config.programs.agent-skills.sources.jbang-agent-skills.path + "/jbang-scripting/SKILL.md"
 );
 assert skills."gh-fix-ci".from == "openai";
+assert skills.caveman.from == "caveman";
+assert skills.caveman.path == "caveman";
 assert skills."quarkus-update".from == "quarkus";
 true
