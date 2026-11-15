@@ -1,4 +1,4 @@
-_config_version: 51
+_config_version: 53
 _left_core_installed: [github-copilot]
 model:
   provider: copilot
