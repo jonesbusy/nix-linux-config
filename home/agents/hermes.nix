@@ -84,6 +84,11 @@ in
     fi
   '';
 
+  home.activation.hermesCronJobs = lib.hm.dag.entryAfter [ "hermesMemoryBackupScript" ] ''
+    HERMES_HOME="$HOME/.hermes" ${hermesPackage.hermesVenv}/bin/python3 \
+      ${../../hermes/scripts/sync-cron-jobs.py} ${../../hermes/cron/jobs.json}
+  '';
+
   home.file = {
     ".hermes/config.yaml".source = ../../hermes/config.yaml;
     ".hermes/SOUL.md".source = ../../hermes/SOUL.md;

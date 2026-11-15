@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "id": "d9392f145e03",
+      "name": "Hourly Pi memory GitHub backup",
+      "prompt": "Run the configured script-only backup for /home/valentin/.pi/agent/memory. The script commits pending memory changes and pushes them to the repository's configured GitHub origin; report any script failure clearly.",
+      "skills": [],
+      "script": "pi-memory-hourly-backup.sh",
+      "no_agent": true,
+      "schedule": "every 60m",
+      "schedule_display": "every 60m",
+      "repeat": { "times": null },
+      "deliver": "local"
+    }
+  ]
+}
