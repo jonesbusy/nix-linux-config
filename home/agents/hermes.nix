@@ -76,13 +76,17 @@ in
   programs.hermes-agent.package = lib.mkForce hermesPackage;
   home.sessionVariables.HERMES_RUNTIME_DIR = "${hermesPackage}/tools";
 
+  home.activation.hermesMemoryBackupScript = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    target="$HOME/.hermes/scripts/pi-memory-hourly-backup.sh"
+    ${pkgs.coreutils}/bin/mkdir -p "$HOME/.hermes/scripts"
+    if ! ${pkgs.diffutils}/bin/cmp -s "${../../hermes/scripts/pi-memory-hourly-backup.sh}" "$target"; then
+      ${pkgs.coreutils}/bin/install -m 0755 "${../../hermes/scripts/pi-memory-hourly-backup.sh}" "$target"
+    fi
+  '';
+
   home.file = {
     ".hermes/config.yaml".source = ../../hermes/config.yaml;
     ".hermes/SOUL.md".source = ../../hermes/SOUL.md;
-    ".hermes/scripts/pi-memory-hourly-backup.sh" = {
-      source = ../../hermes/scripts/pi-memory-hourly-backup.sh;
-      force = true;
-    };
     ".hermes/plugins/github-copilot".source = "${hermes-labs-plugins}/github-copilot";
   };
 }
