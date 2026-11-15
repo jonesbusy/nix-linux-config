@@ -28,6 +28,7 @@
     pkgs.temurin-bin-25
     (pkgs.jbang.override { jdk = pkgs.temurin-bin-25; })
     pkgs.gh
+    pkgs.himalaya
     pkgs.ansible
     pkgs.sops
     pkgs.age
