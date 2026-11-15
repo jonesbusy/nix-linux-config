@@ -8,7 +8,7 @@
   "quietStartup": "header",
   "packages": [
     "npm:pi-cowboy@0.35.0",
-    "npm:pi-web-access@0.47.0",
+    "npm:pi-web-access@0.48.0",
     "npm:pi-polish@0.1.11",
     "npm:@dietrichgebert/ponytail@5.3.3",
     "npm:pi-context-bar@0.1.2",
