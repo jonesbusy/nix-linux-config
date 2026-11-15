@@ -21,6 +21,7 @@ class HermesCronSyncTest(unittest.TestCase):
         self.home = Path(self.temp.name) / ".hermes"
         (self.home / "scripts").mkdir(parents=True)
         (self.home / "scripts/pi-memory-hourly-backup.sh").write_text("#!/bin/sh\nexit 0\n")
+        (self.home / "scripts/obsidian-vault-hourly-backup.sh").write_text("#!/bin/sh\nexit 0\n")
         previous_home = os.environ.get("HERMES_HOME")
         os.environ["HERMES_HOME"] = str(self.home)
         self.addCleanup(self.restore_hermes_home, previous_home)
@@ -72,20 +73,22 @@ class HermesCronSyncTest(unittest.TestCase):
 
         self.assertTrue(sync_module.sync_jobs(DEFINITIONS_PATH))
         with use_cron_store(self.home):
-            after_first = load_jobs()[0]
-        self.assertEqual(after_first["script"], "pi-memory-hourly-backup.sh")
-        self.assertTrue(after_first["enabled"])
-        self.assertEqual(after_first["state"], "scheduled")
-        self.assertEqual(after_first["repeat"]["completed"], 7)
+            after_first = {job["id"]: job for job in load_jobs()}
+        pi_job = after_first["d9392f145e03"]
+        self.assertEqual(pi_job["script"], "pi-memory-hourly-backup.sh")
+        self.assertTrue(pi_job["enabled"])
+        self.assertEqual(pi_job["state"], "scheduled")
+        self.assertEqual(pi_job["repeat"]["completed"], 7)
         for field, value in runtime_fields.items():
-            self.assertEqual(after_first[field], value)
-        self.assertEqual(after_first["origin"], {"platform": "local", "chat_id": "runtime-only"})
+            self.assertEqual(pi_job[field], value)
+        self.assertEqual(pi_job["origin"], {"platform": "local", "chat_id": "runtime-only"})
         for field in ("skill", "model", "provider", "base_url", "monitor_script", "monitor_url", "context_from"):
-            self.assertIsNone(after_first[field])
+            self.assertIsNone(pi_job[field])
+        self.assertFalse(after_first["obsidian-vault-hourly-backup"]["enabled"])
 
         self.assertFalse(sync_module.sync_jobs(DEFINITIONS_PATH))
         with use_cron_store(self.home):
-            self.assertEqual(load_jobs()[0], after_first)
+            self.assertEqual({job["id"]: job for job in load_jobs()}, after_first)
 
     def test_new_definition_is_added_paused(self):
         from cron.jobs import load_jobs, use_cron_store

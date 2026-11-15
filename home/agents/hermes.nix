@@ -76,15 +76,18 @@ in
   programs.hermes-agent.package = lib.mkForce hermesPackage;
   home.sessionVariables.HERMES_RUNTIME_DIR = "${hermesPackage}/tools";
 
-  home.activation.hermesMemoryBackupScript = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    target="$HOME/.hermes/scripts/pi-memory-hourly-backup.sh"
+  home.activation.hermesBackupScripts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.coreutils}/bin/mkdir -p "$HOME/.hermes/scripts"
-    if ! ${pkgs.diffutils}/bin/cmp -s "${../../hermes/scripts/pi-memory-hourly-backup.sh}" "$target"; then
-      ${pkgs.coreutils}/bin/install -m 0755 "${../../hermes/scripts/pi-memory-hourly-backup.sh}" "$target"
-    fi
+    for script in pi-memory-hourly-backup.sh obsidian-vault-hourly-backup.sh; do
+      source="${../../hermes/scripts}/$script"
+      target="$HOME/.hermes/scripts/$script"
+      if ! ${pkgs.diffutils}/bin/cmp -s "$source" "$target"; then
+        ${pkgs.coreutils}/bin/install -m 0755 "$source" "$target"
+      fi
+    done
   '';
 
-  home.activation.hermesCronJobs = lib.hm.dag.entryAfter [ "hermesMemoryBackupScript" ] ''
+  home.activation.hermesCronJobs = lib.hm.dag.entryAfter [ "hermesBackupScripts" ] ''
     HERMES_HOME="$HOME/.hermes" ${hermesPackage.hermesVenv}/bin/python3 \
       ${../../hermes/scripts/sync-cron-jobs.py} ${../../hermes/cron/jobs.json}
   '';
