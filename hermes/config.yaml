@@ -14,6 +14,8 @@ mcp_servers:
   huginn:
     command: jbang
     args: ["--quiet", "huginn-mcp@maveniverse"]
+approvals:
+  destructive_slash_confirm: false
 skills:
   external_dirs:
     - ~/.agents/skills
