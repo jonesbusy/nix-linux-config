@@ -3,6 +3,25 @@
 {
   programs.home-manager.enable = true;
 
+  programs.git = {
+    enable = true;
+    signing = {
+      key = "/home/valentin/.ssh/id_ed25519";
+      signByDefault = true;
+    };
+    settings = {
+      user.name = "Valentin Delaye";
+      user.email = "jonesbusy@users.noreply.github.com";
+      init.defaultBranch = "main";
+      gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "/home/valentin/.ssh/allowed_signers";
+    };
+  };
+
+  home.file.".ssh/allowed_signers".text = ''
+    jonesbusy@users.noreply.github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAZy+56J51Qs8quZXIUW99V0LQUQWuPsoi4Lej3hiwBQ valentin@foobar
+  '';
+
   # Command-line tools for the Linux Home Manager configuration.
   home.packages = [
     pkgs.nodejs_26
