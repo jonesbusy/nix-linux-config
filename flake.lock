@@ -87,11 +87,11 @@
     },
     "crane": {
       "locked": {
-        "lastModified": 1792350552,
-        "narHash": "sha256-292lvpvxTGKryKxh3/3tcIVi85CwYGdl4oOi113Sob8=",
+        "lastModified": 1793836618,
+        "narHash": "sha256-TREenflwEjxOSq292FYwbc3kEm7TDRtXCZRNWEdjBmg=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "e675a36b7377bebe41d548388a2501cbb16d380d",
+        "rev": "79fd63528501446749c09f08cad486a58c7d173e",
         "type": "github"
       },
       "original": {
@@ -234,11 +234,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792818383,
-        "narHash": "sha256-199i7ubVSXTMl+0AAlL7cVCXSjcI+jWByMcimYjeMX0=",
+        "lastModified": 1794251182,
+        "narHash": "sha256-R2sZBXiOJo3HAnvTiVkbbHDJy//JMlAwUKEiPbfqPXk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "24f2190587513b9c2f73db112a17844ae912d965",
+        "rev": "6eb2d33d1d0c95a37ef6443c88e6c1686012ee8b",
         "type": "github"
       },
       "original": {
@@ -305,15 +305,16 @@
           "nixpkgs"
         ],
         "openai-skills": "openai-skills",
+        "qmd": "qmd",
         "quarkus-skills": "quarkus-skills",
         "softaworks-agent-toolkit": "softaworks-agent-toolkit"
       },
       "locked": {
-        "lastModified": 1794685754,
-        "narHash": "sha256-Q+ATPpj30l8Z1ZhDfgTAP7v15kzIArdzPH8V5aHoZQc=",
+        "lastModified": 1794773361,
+        "narHash": "sha256-bI5BOpRPcZ9cJ8fiXqC8G8Zoe6q1fdtdJX50kTTjwhw=",
         "owner": "jonesbusy",
         "repo": "nix-agents-skills",
-        "rev": "4fa25e9a24d5917959a71f8ce950badb0dcbe8c0",
+        "rev": "6bf42dde439fa940506578be0d2f7c7272ec2fa3",
         "type": "github"
       },
       "original": {
@@ -541,6 +542,22 @@
       }
     },
     "qmd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794746444,
+        "narHash": "sha256-OKyCkRMv13BfoOE4DDJT4CCiIS/b/fA94TrTNoSWFXM=",
+        "owner": "tobi",
+        "repo": "qmd",
+        "rev": "ee88c16d4dc4ac8e5a835ad775ec69e92fb20c23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tobi",
+        "repo": "qmd",
+        "type": "github"
+      }
+    },
+    "qmd_2": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
@@ -548,11 +565,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792033446,
-        "narHash": "sha256-NRhUY+5guDsCihcHv2BAiZtm9saC1H1Li/P+k4v/FPk=",
+        "lastModified": 1794746444,
+        "narHash": "sha256-OKyCkRMv13BfoOE4DDJT4CCiIS/b/fA94TrTNoSWFXM=",
         "owner": "tobi",
         "repo": "qmd",
-        "rev": "86d2365d17fc682e491c2c53d1e4a884aee8682a",
+        "rev": "ee88c16d4dc4ac8e5a835ad775ec69e92fb20c23",
         "type": "github"
       },
       "original": {
@@ -586,7 +603,7 @@
         "nix-linuxbrew": "nix-linuxbrew",
         "nixpkgs": "nixpkgs_2",
         "plugin-modernizer": "plugin-modernizer",
-        "qmd": "qmd",
+        "qmd": "qmd_2",
         "sofka": "sofka"
       }
     },
@@ -599,11 +616,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794390217,
-        "narHash": "sha256-btdtUUkw5ComrAj4FxjU/jGwx+ztIJlP1TX/U1QyIK8=",
+        "lastModified": 1794751243,
+        "narHash": "sha256-bInSERiRed75l4ElQ/YciZG5PungIPLKxO5I+JIIixI=",
         "owner": "nklmilojevic",
         "repo": "sofka",
-        "rev": "2d255e16c53108ffcecf5de07b811f622aa2e45a",
+        "rev": "e0befc5fc7120b18d9066108fe586443454bd1be",
         "type": "github"
       },
       "original": {
