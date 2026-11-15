@@ -79,7 +79,10 @@ in
   home.file = {
     ".hermes/config.yaml".source = ../../hermes/config.yaml;
     ".hermes/SOUL.md".source = ../../hermes/SOUL.md;
-    ".hermes/scripts/pi-memory-hourly-backup.sh".source = ../../hermes/scripts/pi-memory-hourly-backup.sh;
+    ".hermes/scripts/pi-memory-hourly-backup.sh" = {
+      source = ../../hermes/scripts/pi-memory-hourly-backup.sh;
+      force = true;
+    };
     ".hermes/plugins/github-copilot".source = "${hermes-labs-plugins}/github-copilot";
   };
 }
