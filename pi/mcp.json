@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "qmd": {
+      "command": "qmd",
+      "args": ["mcp"]
+    },
     "github": {
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
@@ -15,6 +19,7 @@
       "args": ["--quiet", "huginn-mcp@maveniverse"]
     },
     "aws-mcp": {
+      "enabled": false,
       "command": "uvx",
       "args": [
         "mcp-proxy-for-aws@latest",

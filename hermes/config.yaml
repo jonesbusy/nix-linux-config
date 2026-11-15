@@ -4,6 +4,9 @@ model:
   provider: copilot
   default: gpt-6-luna
 mcp_servers:
+  qmd:
+    command: qmd
+    args: ["mcp"]
   github-copilot:
     url: https://api.githubcopilot.com/mcp/
     headers:
