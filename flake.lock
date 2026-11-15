@@ -191,11 +191,11 @@
     "hermes-labs-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1794552420,
-        "narHash": "sha256-vlGr/F6I1tEO/4qPinEqm3+jlQGo8P1e25jn0kuHdmM=",
+        "lastModified": 1794700113,
+        "narHash": "sha256-UO4Qy8vjXM2C2lNmRP56IKylrx5SWKHLGLSk6Dti1mE=",
         "owner": "NousResearch",
         "repo": "hermes-labs-plugins",
-        "rev": "df8f1321941125d45dde71ab20196fbeea093191",
+        "rev": "46f6da9af0c4e9ad5a3c9444dfecfa5bf7debf76",
         "type": "github"
       },
       "original": {
@@ -212,11 +212,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794278858,
-        "narHash": "sha256-rkrJwLgLSHBnXfgoSKIDa+2LLGdTqynsV3GAxOTGhUU=",
+        "lastModified": 1794715309,
+        "narHash": "sha256-awkBBs5ctFKgEYjpNGpi3t/VqF589n5EWfdinRb2gNI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "82ce401aa350502897c3f2e85f384d61cd3b0b6d",
+        "rev": "a1293da7dd8e497e08d26173f97e2976b36a31ea",
         "type": "github"
       },
       "original": {
@@ -277,11 +277,11 @@
         "pi": "pi"
       },
       "locked": {
-        "lastModified": 1794594478,
-        "narHash": "sha256-uzGxbUKTt0kQTkQOnC2ubmC3hHExpb3mBhjeysO3sD0=",
+        "lastModified": 1794719246,
+        "narHash": "sha256-P32dxlUnqN9B3m/VFIMgQM+UJvGutzR3vxZfBQAMGL4=",
         "owner": "jonesbusy",
         "repo": "nix-agents-home",
-        "rev": "a8e2d04980551ba8c4e194d5ff46d3696511ded8",
+        "rev": "9e69315a35ddaf34b8185f5fe3d5ebf0205fa882",
         "type": "github"
       },
       "original": {
