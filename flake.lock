@@ -277,11 +277,11 @@
         "pi": "pi"
       },
       "locked": {
-        "lastModified": 1794719246,
-        "narHash": "sha256-P32dxlUnqN9B3m/VFIMgQM+UJvGutzR3vxZfBQAMGL4=",
+        "lastModified": 1794829302,
+        "narHash": "sha256-pVhSdEdzH9R2EfW00ScW0tmw4xhmIUrxg4lXO9kK2J4=",
         "owner": "jonesbusy",
         "repo": "nix-agents-home",
-        "rev": "9e69315a35ddaf34b8185f5fe3d5ebf0205fa882",
+        "rev": "79ec70dafa4283e97d33f1c5555981c17f87134a",
         "type": "github"
       },
       "original": {
@@ -310,11 +310,11 @@
         "softaworks-agent-toolkit": "softaworks-agent-toolkit"
       },
       "locked": {
-        "lastModified": 1794773361,
-        "narHash": "sha256-bI5BOpRPcZ9cJ8fiXqC8G8Zoe6q1fdtdJX50kTTjwhw=",
+        "lastModified": 1794814721,
+        "narHash": "sha256-fivKFnhrarnIeiP3hkIa3c7NaTsndA3vCEmkgOQFUJY=",
         "owner": "jonesbusy",
         "repo": "nix-agents-skills",
-        "rev": "6bf42dde439fa940506578be0d2f7c7272ec2fa3",
+        "rev": "9d88c1afb33e35c38ccb0ecc04890eee6bb691d1",
         "type": "github"
       },
       "original": {
