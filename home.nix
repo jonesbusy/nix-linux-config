@@ -34,6 +34,7 @@
     pkgs.age
     pkgs.signal-cli
     pkgs.awscli2
+    pkgs.google-cloud-sdk
     pkgs.cosign
     pkgs.diffoscope
     pkgs.fluxcd
