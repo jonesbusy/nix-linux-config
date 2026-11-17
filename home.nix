@@ -65,6 +65,20 @@
 
   home.backupFileExtension = "bak";
 
+  systemd.user.services.signal-cli = {
+    Unit = {
+      Description = "Signal CLI HTTP daemon";
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.signal-cli}/bin/signal-cli daemon --http 127.0.0.1:8899";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install.WantedBy = [ "default.target" ];
+  };
+
   home.file.".git-prompt.sh" = {
     source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh";
