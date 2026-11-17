@@ -74,7 +74,11 @@ in
 {
   programs.hermes-agent.desktop.enable = false;
   programs.hermes-agent.package = lib.mkForce hermesPackage;
-  home.sessionVariables.HERMES_RUNTIME_DIR = "${hermesPackage}/tools";
+  home.sessionVariables = {
+    HERMES_RUNTIME_DIR = "${hermesPackage}/tools";
+    WIKI_PATH = "/home/valentin/git/github/obsidian-vault/personal";
+    OBSIDIAN_VAULT_PATH = "/home/valentin/git/github/obsidian-vault/personal";
+  };
 
   home.activation.hermesBackupScripts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.coreutils}/bin/mkdir -p "$HOME/.hermes/scripts"
