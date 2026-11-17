@@ -34,6 +34,7 @@ let
   ];
   hermesLock = builtins.fromJSON (builtins.readFile "${hermes-agent.outPath}/pm/lock.json");
   hermesTarget = "linux-${if pkgs.stdenv.hostPlatform.isAarch64 then "arm64" else "x64"}";
+  hermesCopilotSource = pkgs.writeText "hermes-copilot-source" "${hermes-labs-plugins}/github-copilot";
   hermesPmFacts = pkgs.writeText "hermes-pm-facts.json" (
     builtins.toJSON {
       schema = 1;
@@ -80,7 +81,30 @@ in
     OBSIDIAN_VAULT_PATH = "/home/valentin/git/github/obsidian-vault/personal";
   };
 
-  home.activation.hermesBackupScripts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.hermesCopilotPlugin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    plugin="$HOME/.hermes/plugins/github-copilot"
+    source="${hermes-labs-plugins}/github-copilot"
+    marker="${hermesCopilotSource}"
+    ${pkgs.coreutils}/bin/mkdir -p "$HOME/.hermes/plugins"
+    if [ -L "$plugin" ]; then ${pkgs.coreutils}/bin/rm "$plugin"; fi
+    if [ ! -d "$plugin" ] || ! ${pkgs.diffutils}/bin/cmp -s "$marker" "$plugin/.nix-source"; then
+      if [ -e "$plugin" ] && [ ! -f "$plugin/.nix-source" ]; then
+        echo "Refusing to replace unmanaged Hermes plugin directory: $plugin" >&2
+        exit 1
+      fi
+      stage=$(${pkgs.coreutils}/bin/mktemp -d "$HOME/.hermes/plugins/.github-copilot.XXXXXX")
+      ${pkgs.coreutils}/bin/cp -R "$source/." "$stage/"
+      ${pkgs.findutils}/bin/find "$stage" -type d -exec ${pkgs.coreutils}/bin/chmod u+rwx {} +
+      ${pkgs.coreutils}/bin/cp "$marker" "$stage/.nix-source"
+      if [ -d "$plugin" ]; then
+        ${pkgs.findutils}/bin/find "$plugin" -type d -exec ${pkgs.coreutils}/bin/chmod u+rwx {} +
+        ${pkgs.coreutils}/bin/rm -rf "$plugin"
+      fi
+      ${pkgs.coreutils}/bin/mv "$stage" "$plugin"
+    fi
+  '';
+
+  home.activation.hermesBackupScripts = lib.hm.dag.entryAfter [ "hermesCopilotPlugin" ] ''
     ${pkgs.coreutils}/bin/mkdir -p "$HOME/.hermes/scripts"
     for script in pi-memory-hourly-backup.sh obsidian-vault-hourly-backup.sh; do
       source="${../../hermes/scripts}/$script"
@@ -99,6 +123,5 @@ in
   home.file = {
     ".hermes/config.yaml".source = ../../hermes/config.yaml;
     ".hermes/SOUL.md".source = ../../hermes/SOUL.md;
-    ".hermes/plugins/github-copilot".source = "${hermes-labs-plugins}/github-copilot";
   };
 }
