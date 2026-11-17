@@ -18,6 +18,14 @@
   xdg.configFile."containers/registries.conf".text = ''
     unqualified-search-registries = ["docker.io"]
     short-name-mode = "disabled"
+
+    [[registry]]
+    location = "localhost:8080"
+    insecure = true
+
+    [[registry]]
+    location = "localhost:5000"
+    insecure = true
   '';
   xdg.configFile."containers/registries.conf.d/shortnames.conf".text = "";
   xdg.configFile."containers/storage.conf".text = ''
