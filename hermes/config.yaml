@@ -7,10 +7,6 @@ mcp_servers:
   qmd:
     command: qmd
     args: ["mcp"]
-  github-copilot:
-    url: https://api.githubcopilot.com/mcp/
-    headers:
-      Authorization: "Bearer ${GH_TOKEN}"
   quarkus-agent:
     command: jbang
     args: ["quarkus-agent-mcp@quarkusio"]
