@@ -1,26 +1,26 @@
 {
   "jobs": [
     {
-      "id": "d9392f145e03",
-      "name": "Hourly Pi memory GitHub backup",
+      "id": "pi-memory-backup",
+      "name": "Pi memory GitHub backup",
       "prompt": "Run the configured script-only backup for /home/valentin/.pi/agent/memory. The script commits pending memory changes and pushes them to the repository's configured GitHub origin; report any script failure clearly.",
       "skills": [],
-      "script": "pi-memory-hourly-backup.sh",
+      "script": "pi-memory-backup.sh",
       "no_agent": true,
-      "schedule": "every 60m",
-      "schedule_display": "every 60m",
+      "schedule": "every 15m",
+      "schedule_display": "every 15m",
       "repeat": { "times": null },
       "deliver": "local"
     },
     {
-      "id": "obsidian-vault-hourly-backup",
-      "name": "Hourly Obsidian vault GitHub backup",
+      "id": "obsidian-vault-backup",
+      "name": "Obsidian vault GitHub backup",
       "prompt": "Run the configured script-only backup for /home/valentin/git/github/obsidian-vault. The script commits pending vault changes and pushes them to the repository's configured GitHub origin; report any script failure clearly.",
       "skills": [],
-      "script": "obsidian-vault-hourly-backup.sh",
+      "script": "obsidian-vault-backup.sh",
       "no_agent": true,
-      "schedule": "every 60m",
-      "schedule_display": "every 60m",
+      "schedule": "every 15m",
+      "schedule_display": "every 15m",
       "repeat": { "times": null },
       "deliver": "local"
     }

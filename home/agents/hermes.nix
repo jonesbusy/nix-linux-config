@@ -106,7 +106,8 @@ in
 
   home.activation.hermesBackupScripts = lib.hm.dag.entryAfter [ "hermesCopilotPlugin" ] ''
     ${pkgs.coreutils}/bin/mkdir -p "$HOME/.hermes/scripts"
-    for script in pi-memory-hourly-backup.sh obsidian-vault-hourly-backup.sh; do
+    ${pkgs.coreutils}/bin/rm -f "$HOME/.hermes/scripts/pi-memory-hourly-backup.sh" "$HOME/.hermes/scripts/obsidian-vault-hourly-backup.sh"
+    for script in pi-memory-backup.sh obsidian-vault-backup.sh; do
       source="${../../hermes/scripts}/$script"
       target="$HOME/.hermes/scripts/$script"
       if ! ${pkgs.diffutils}/bin/cmp -s "$source" "$target"; then
