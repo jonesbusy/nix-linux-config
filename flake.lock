@@ -174,16 +174,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1794270273,
-        "narHash": "sha256-wGv+kNpiOGa1k/QxN7njXSF3wmlwPGtQ02Frnp6hP18=",
+        "lastModified": 1794857325,
+        "narHash": "sha256-IgtyKYVzRbDmeyMuRqSkyV9ev+4tx2Qcg8QRvJkoSS8=",
         "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "3b421578588243f920886e6fe79a6faa87ea026e",
+        "rev": "ae2a81ccc00e9b7c06301523e5bb09608397149c",
         "type": "github"
       },
       "original": {
         "owner": "NousResearch",
-        "ref": "v0.23.1",
+        "ref": "v0.23.2",
         "repo": "hermes-agent",
         "type": "github"
       }
@@ -212,11 +212,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794715309,
-        "narHash": "sha256-awkBBs5ctFKgEYjpNGpi3t/VqF589n5EWfdinRb2gNI=",
+        "lastModified": 1794865930,
+        "narHash": "sha256-a3My+u9CEwEFmuGXb3PV9COj7Gd8o28b19TvtDiKPfg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a1293da7dd8e497e08d26173f97e2976b36a31ea",
+        "rev": "9d7ba6bef3904a018d38b92f83132eaf01eb8ef3",
         "type": "github"
       },
       "original": {
@@ -277,11 +277,11 @@
         "pi": "pi"
       },
       "locked": {
-        "lastModified": 1794829302,
-        "narHash": "sha256-pVhSdEdzH9R2EfW00ScW0tmw4xhmIUrxg4lXO9kK2J4=",
+        "lastModified": 1794885044,
+        "narHash": "sha256-u5329PEaLyEDjWiW6tXZpAkRUIofEbq6JuKr4CxySkw=",
         "owner": "jonesbusy",
         "repo": "nix-agents-home",
-        "rev": "79ec70dafa4283e97d33f1c5555981c17f87134a",
+        "rev": "c63d67f3437bd2708364725aa419bc77a5d53d36",
         "type": "github"
       },
       "original": {
@@ -334,11 +334,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789817161,
-        "narHash": "sha256-p23OzmD7wTdVOR8rhBqv5v83P9UgCMcFsNrf31SItDA=",
+        "lastModified": 1794836058,
+        "narHash": "sha256-BVEmcjIydcjeMrqYOX9BrrGJRmxMlh95DZ5Yg2QWBt4=",
         "owner": "deepwatrcreatur",
         "repo": "nix-linuxbrew",
-        "rev": "472197ef91817ab81d986bb39734c62afb04f650",
+        "rev": "55414ece8a9094712a98cbed0b0fabb953b42601",
         "type": "github"
       },
       "original": {
@@ -397,11 +397,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1794165970,
-        "narHash": "sha256-XuAV2cUwaod3Bt4XFVqiXz3v1w2ex16W6Sv4S7EWres=",
+        "lastModified": 1794756927,
+        "narHash": "sha256-IfuPcOpwC+bYvBdtUhA9hHhY7xV7k9T5LeOTZFiJB4o=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ac588ef1c914865dad517b337ea0eb9694a4021c",
+        "rev": "b349185bb79c7cf7ad8ea8c097931730bf473c71",
         "type": "github"
       },
       "original": {
@@ -474,11 +474,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1794495409,
-        "narHash": "sha256-MEsy64dwSQysPdON7vyY2dcyDGXlot0OO/dWO12BExw=",
+        "lastModified": 1794888895,
+        "narHash": "sha256-jh9N7cL7Hvww50RUfRWsCq3mNJc066H9/GRwDe5qlww=",
         "owner": "jenkins-infra",
         "repo": "plugin-modernizer-tool",
-        "rev": "0e3fba6ac29f1d77edb3172aef3be547819aaf55",
+        "rev": "26b1532578e74439de86f2919bab9b1c87cf3389",
         "type": "github"
       },
       "original": {
@@ -616,11 +616,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794751243,
-        "narHash": "sha256-bInSERiRed75l4ElQ/YciZG5PungIPLKxO5I+JIIixI=",
+        "lastModified": 1794835042,
+        "narHash": "sha256-5n9/eZsZa7EIwm8bZvG3cAmXusgLmvPQREEcWSqrIts=",
         "owner": "nklmilojevic",
         "repo": "sofka",
-        "rev": "e0befc5fc7120b18d9066108fe586443454bd1be",
+        "rev": "4c108f835f7e3512bb99483e10a2e08ae7683f86",
         "type": "github"
       },
       "original": {
