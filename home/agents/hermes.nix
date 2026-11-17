@@ -3,6 +3,7 @@
   hermes-labs-plugins,
   lib,
   pkgs,
+  googleWorkspaceCli,
   ...
 }:
 let
@@ -58,6 +59,19 @@ let
       );
     }
   );
+  googleCalendarPython = pkgs.python3.withPackages (ps: [
+    ps.google-api-python-client
+    ps.google-auth-oauthlib
+    ps.mcp
+  ]);
+  googleCalendarCommands = [
+    (pkgs.writeShellScriptBin "hermes-google-calendar-auth" ''
+      exec ${googleCalendarPython}/bin/python ${../../hermes/google_calendar_auth.py} "$@"
+    '')
+    (pkgs.writeShellScriptBin "hermes-google-calendar-mcp" ''
+      exec ${googleCalendarPython}/bin/python ${../../hermes/google_calendar_mcp.py} "$@"
+    '')
+  ];
   hermesPackage =
     (hermesPackages.default.override {
       inherit pmPackages;
@@ -73,6 +87,8 @@ let
       });
 in
 {
+  home.packages = googleCalendarCommands ++ [ googleWorkspaceCli ];
+
   programs.hermes-agent.desktop.enable = false;
   programs.hermes-agent.package = lib.mkForce hermesPackage;
   home.sessionVariables = {

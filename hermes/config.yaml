@@ -4,6 +4,8 @@ model:
   provider: copilot
   default: gpt-6-luna
 mcp_servers:
+  google_calendar:
+    command: hermes-google-calendar-mcp
   qmd:
     command: qmd
     args: ["mcp"]

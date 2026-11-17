@@ -11,6 +11,11 @@
 
     plugin-modernizer.url = "github:jenkins-infra/plugin-modernizer-tool";
 
+    gws = {
+      url = "github:googleworkspace/cli/v0.22.5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     qmd = {
       url = "github:tobi/qmd";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +61,7 @@
       nix-agents-skills,
       nix-agents-home,
       qmd,
+      gws,
       ...
     }:
     let
@@ -86,6 +92,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit hermes-labs-plugins pluginModernizer qmd;
+          googleWorkspaceCli = gws.packages.${linuxSystem}.default;
           hermes-agent = nix-agents-home.inputs.hermes-agent;
         };
         modules = [
