@@ -32,6 +32,7 @@
     pkgs.ansible
     pkgs.sops
     pkgs.age
+    pkgs.signal-cli
     pkgs.awscli2
     pkgs.cosign
     pkgs.diffoscope
