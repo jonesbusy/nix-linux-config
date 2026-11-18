@@ -142,6 +142,37 @@ class HermesCronSyncTest(unittest.TestCase):
         self.assertEqual(imported["state"], "paused")
         self.assertFalse(imported["enabled"])
 
+    def test_drive_ingestion_definition_is_review_gated_and_routes_unknowns_safely(self):
+        from cron.jobs import load_jobs, use_cron_store
+
+        definitions = json.loads(DEFINITIONS_PATH.read_text())
+        job = next(item for item in definitions["jobs"] if item["id"] == "drive-obsidian-ingest")
+        prompt = job["prompt"]
+        self.assertEqual(job["schedule"], "every 240m")
+        self.assertEqual(job["skills"], ["google-workspace", "note-taking/obsidian"])
+        prompt_lower = prompt.lower()
+        for required in (
+            "`ingest`",
+            "obsidian_vault_path",
+            "unknown",
+            "log.md",
+            "pdftotext",
+            "read back",
+            "configured hermes model receives the extracted text",
+        ):
+            self.assertIn(required, prompt_lower)
+        self.assertNotRegex(prompt, r"/home/[^/]+")
+        self.assertIn("do not delete", prompt_lower)
+        self.assertIn("do not share", prompt_lower)
+        hermes_module = (ROOT / "home/agents/hermes.nix").read_text()
+        self.assertIn("pkgs.poppler-utils", hermes_module)
+
+        self.assertTrue(sync_module.sync_jobs(DEFINITIONS_PATH))
+        with use_cron_store(self.home):
+            imported = next(item for item in load_jobs() if item["id"] == "drive-obsidian-ingest")
+        self.assertEqual(imported["state"], "paused")
+        self.assertFalse(imported["enabled"])
+
     def test_conflicting_id_fails_closed(self):
         from cron.jobs import save_jobs, use_cron_store
 

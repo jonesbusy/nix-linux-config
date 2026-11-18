@@ -74,7 +74,10 @@ let
       });
 in
 {
-  home.packages = [ googleWorkspaceCli ];
+  home.packages = [
+    googleWorkspaceCli
+    pkgs.poppler-utils
+  ];
 
   programs.hermes-agent.desktop.enable = false;
   programs.hermes-agent.package = lib.mkForce hermesPackage;
