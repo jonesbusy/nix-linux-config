@@ -1,11 +1,8 @@
 { pkgs, qmd, ... }:
 let
-  qmdPackage = qmd.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-    # Avoid exposing Nix glibc to host commands through qmd's LD_LIBRARY_PATH.
-    postFixup = (old.postFixup or "") + ''
-      substituteInPlace $out/bin/qmd \
-        --replace-fail "${pkgs.stdenv.cc.libc.out}/lib:" ""
-    '';
+  qmdPackage = qmd.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (_: {
+    # Upstream still substitutes glibc from the old wrapper, but qmd no longer adds it.
+    postFixup = "";
   });
 in
 {
