@@ -159,6 +159,7 @@ class HermesCronSyncTest(unittest.TestCase):
             "pdftotext",
             "read back",
             "configured hermes model receives the extracted text",
+            "capabilities.canmoveitemwithindrive",
         ):
             self.assertIn(required, prompt_lower)
         self.assertNotRegex(prompt, r"/home/[^/]+")
