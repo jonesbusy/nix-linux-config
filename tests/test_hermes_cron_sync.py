@@ -149,7 +149,14 @@ class HermesCronSyncTest(unittest.TestCase):
         job = next(item for item in definitions["jobs"] if item["id"] == "drive-obsidian-ingest")
         prompt = job["prompt"]
         self.assertEqual(job["schedule"], "every 240m")
-        self.assertEqual(job["skills"], ["google-workspace", "note-taking/obsidian"])
+        self.assertEqual(
+            job["skills"],
+            ["productivity/google-workspace", "note-taking/obsidian", "drive-document-ingestion"],
+        )
+        self.assertEqual(job["skill"], "productivity/google-workspace")
+        self.assertIn("`Unknown`", prompt)
+        self.assertNotIn("`unknown`", prompt)
+        self.assertIn("do not create new categories or a tax folder/tree", prompt.lower())
         prompt_lower = prompt.lower()
         for required in (
             "`ingest`",
