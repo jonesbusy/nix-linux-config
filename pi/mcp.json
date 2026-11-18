@@ -7,7 +7,7 @@
     "github": {
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
-        "Authorization": "Bearer ${GH_TOKEN}"
+        "Authorization": "Bearer ${MCP_GH_TOKEN}"
       }
     },
     "quarkus-agent": {

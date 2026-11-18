@@ -99,9 +99,9 @@
     };
 
     initContent = ''
-      # Expose GitHub CLI credentials to programs that require GH_TOKEN.
-      if [[ -z "$GH_TOKEN" ]] && command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
-        GH_TOKEN="$(gh auth token 2>/dev/null)" && export GH_TOKEN
+      # Expose GitHub CLI credentials to programs that require MCP_GH_TOKEN.
+      if [[ -z "$MCP_GH_TOKEN" ]] && command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+        MCP_GH_TOKEN="$(gh auth token 2>/dev/null)" && export MCP_GH_TOKEN
       fi
 
       # Clear stale SDKMAN state inherited from already-running parent shells.

@@ -13,7 +13,7 @@
       "enabled": true,
       "oauth": false,
       "headers": {
-        "Authorization": "Bearer {env:GH_TOKEN}"
+        "Authorization": "Bearer {env:MCP_GH_TOKEN}"
       }
     },
     "quarkus-agent": {
