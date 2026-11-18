@@ -22,6 +22,7 @@ class HermesCronSyncTest(unittest.TestCase):
         (self.home / "scripts").mkdir(parents=True)
         (self.home / "scripts/pi-memory-backup.sh").write_text("#!/bin/sh\nexit 0\n")
         (self.home / "scripts/obsidian-vault-backup.sh").write_text("#!/bin/sh\nexit 0\n")
+        (self.home / "scripts/hermes-private-drift-backup.sh").write_text("#!/bin/sh\nexit 0\n")
         previous_home = os.environ.get("HERMES_HOME")
         os.environ["HERMES_HOME"] = str(self.home)
         self.addCleanup(self.restore_hermes_home, previous_home)
@@ -120,6 +121,26 @@ class HermesCronSyncTest(unittest.TestCase):
         self.assertRegex(job["id"], r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
         self.assertIn("gmail-to-obsidian-ingest", job["skills"])
         self.assertNotRegex(job["prompt"], r"/home/[^/]+")
+
+    def test_private_drift_backup_is_script_only_and_imports_paused(self):
+        from cron.jobs import load_jobs, use_cron_store
+
+        definitions = json.loads(DEFINITIONS_PATH.read_text())
+        job = next(item for item in definitions["jobs"] if item["id"] == "hermes-private-drift-backup")
+        self.assertEqual(job["script"], "hermes-private-drift-backup.sh")
+        self.assertTrue(job["no_agent"])
+        self.assertEqual(job["skills"], [])
+        self.assertEqual(job["schedule"], "every 15m")
+        wrapper = (ROOT / "hermes/scripts/hermes-private-drift-backup.sh").read_text()
+        self.assertIn("backup_skills.py", wrapper)
+        self.assertIn("--apply", wrapper)
+        self.assertNotIn("git add -A", wrapper)
+
+        self.assertTrue(sync_module.sync_jobs(DEFINITIONS_PATH))
+        with use_cron_store(self.home):
+            imported = next(job for job in load_jobs() if job["id"] == "hermes-private-drift-backup")
+        self.assertEqual(imported["state"], "paused")
+        self.assertFalse(imported["enabled"])
 
     def test_conflicting_id_fails_closed(self):
         from cron.jobs import save_jobs, use_cron_store

@@ -89,6 +89,13 @@ in
   };
   systemd.user.services.hermes-agent.Service.Environment = lib.mkAfter [
     "HERMES_RUNTIME_DIR=${hermesPackage}/tools"
+    "HERMES_PRIVATE_DRIFT_PYTHON=${hermesPackage.hermesVenv}/bin/python3"
+    "HERMES_PRIVATE_DRIFT_BIN_PATH=${
+      lib.makeBinPath [
+        pkgs.git
+        pkgs.gh
+      ]
+    }"
   ];
 
   home.sessionVariables = {
@@ -123,7 +130,7 @@ in
   home.activation.hermesBackupScripts = lib.hm.dag.entryAfter [ "hermesCopilotPlugin" ] ''
     ${pkgs.coreutils}/bin/mkdir -p "$HOME/.hermes/scripts"
     ${pkgs.coreutils}/bin/rm -f "$HOME/.hermes/scripts/pi-memory-hourly-backup.sh" "$HOME/.hermes/scripts/obsidian-vault-hourly-backup.sh"
-    for script in pi-memory-backup.sh obsidian-vault-backup.sh; do
+    for script in pi-memory-backup.sh obsidian-vault-backup.sh hermes-private-drift-backup.sh; do
       source="${../../hermes/scripts}/$script"
       target="$HOME/.hermes/scripts/$script"
       if ! ${pkgs.diffutils}/bin/cmp -s "$source" "$target"; then
