@@ -20,8 +20,8 @@ class HermesCronSyncTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.home = Path(self.temp.name) / ".hermes"
         (self.home / "scripts").mkdir(parents=True)
-        (self.home / "scripts/pi-memory-hourly-backup.sh").write_text("#!/bin/sh\nexit 0\n")
-        (self.home / "scripts/obsidian-vault-hourly-backup.sh").write_text("#!/bin/sh\nexit 0\n")
+        (self.home / "scripts/pi-memory-backup.sh").write_text("#!/bin/sh\nexit 0\n")
+        (self.home / "scripts/obsidian-vault-backup.sh").write_text("#!/bin/sh\nexit 0\n")
         previous_home = os.environ.get("HERMES_HOME")
         os.environ["HERMES_HOME"] = str(self.home)
         self.addCleanup(self.restore_hermes_home, previous_home)
@@ -40,11 +40,10 @@ class HermesCronSyncTest(unittest.TestCase):
             "last_run_at": "2026-01-02T03:04:05+00:00",
             "last_status": "ok",
             "failure_streak": 2,
-            "next_run_at": "2026-01-02T04:00:00+00:00",
         }
         job = {
-            "id": "d9392f145e03",
-            "name": "Hourly Pi memory GitHub backup",
+            "id": "pi-memory-backup",
+            "name": "Pi memory GitHub backup",
             "prompt": "Run the configured script-only backup for /home/valentin/.pi/agent/memory. The script commits pending memory changes and pushes them to the repository's configured GitHub origin; report any script failure clearly.",
             "skills": [],
             "script": "old-backup.sh",
@@ -74,8 +73,8 @@ class HermesCronSyncTest(unittest.TestCase):
         self.assertTrue(sync_module.sync_jobs(DEFINITIONS_PATH))
         with use_cron_store(self.home):
             after_first = {job["id"]: job for job in load_jobs()}
-        pi_job = after_first["d9392f145e03"]
-        self.assertEqual(pi_job["script"], "pi-memory-hourly-backup.sh")
+        pi_job = after_first["pi-memory-backup"]
+        self.assertEqual(pi_job["script"], "pi-memory-backup.sh")
         self.assertTrue(pi_job["enabled"])
         self.assertEqual(pi_job["state"], "scheduled")
         self.assertEqual(pi_job["repeat"]["completed"], 7)
@@ -84,7 +83,7 @@ class HermesCronSyncTest(unittest.TestCase):
         self.assertEqual(pi_job["origin"], {"platform": "local", "chat_id": "runtime-only"})
         for field in ("skill", "model", "provider", "base_url", "monitor_script", "monitor_url", "context_from"):
             self.assertIsNone(pi_job[field])
-        self.assertFalse(after_first["obsidian-vault-hourly-backup"]["enabled"])
+        self.assertFalse(after_first["obsidian-vault-backup"]["enabled"])
 
         self.assertFalse(sync_module.sync_jobs(DEFINITIONS_PATH))
         with use_cron_store(self.home):
@@ -98,7 +97,7 @@ class HermesCronSyncTest(unittest.TestCase):
             "id": "future-job-001",
             "name": "Future job",
             "prompt": "Probe",
-            "script": "pi-memory-hourly-backup.sh",
+            "script": "pi-memory-backup.sh",
             "no_agent": True,
             "schedule": "every 60m",
             "schedule_display": "every 60m",
@@ -112,13 +111,21 @@ class HermesCronSyncTest(unittest.TestCase):
             jobs = {job["id"]: job for job in load_jobs()}
         self.assertEqual(jobs["future-job-001"]["state"], "paused")
         self.assertFalse(jobs["future-job-001"]["enabled"])
-        self.assertFalse(jobs["d9392f145e03"]["enabled"])
+        self.assertFalse(jobs["pi-memory-backup"]["enabled"])
+
+    def test_gmail_ingestion_definition_uses_generic_configuration(self):
+        definitions = json.loads(DEFINITIONS_PATH.read_text())
+        job = next(item for item in definitions["jobs"] if item["id"] == "gmail-obsidian-ingest")
+        self.assertIn("OBSIDIAN_VAULT_PATH", job["prompt"])
+        self.assertRegex(job["id"], r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+        self.assertIn("gmail-to-obsidian-ingest", job["skills"])
+        self.assertNotRegex(job["prompt"], r"/home/[^/]+")
 
     def test_conflicting_id_fails_closed(self):
         from cron.jobs import save_jobs, use_cron_store
 
         with use_cron_store(self.home):
-            save_jobs([{"id": "d9392f145e03", "name": "Unrelated job"}], replace=True)
+            save_jobs([{"id": "pi-memory-backup", "name": "Unrelated job"}], replace=True)
         with self.assertRaisesRegex(ValueError, "refusing to overwrite"):
             sync_module.sync_jobs(DEFINITIONS_PATH)
 
