@@ -2,7 +2,7 @@
   "lastChangelogVersion": "1.5.2",
   "collapseChangelog": true,
   "defaultProvider": "github-copilot",
-  "defaultModel": "mai-code-2-flash",
+  "defaultModel": "gpt-6-luna",
   "defaultThinkingLevel": "minimal",
   "hideThinkingBlock": true,
   "quietStartup": "header",
