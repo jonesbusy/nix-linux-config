@@ -78,6 +78,19 @@ in
 
   programs.hermes-agent.desktop.enable = false;
   programs.hermes-agent.package = lib.mkForce hermesPackage;
+
+  # The Nix store is immutable, so let Home Manager own the gateway unit
+  # instead of using `hermes gateway install`'s mutable launcher setup.
+  services.hermes-agent = {
+    enable = true;
+    gateway.enable = true;
+    package = lib.mkForce hermesPackage;
+    configFile = ../../hermes/config.yaml;
+  };
+  systemd.user.services.hermes-agent.Service.Environment = lib.mkAfter [
+    "HERMES_RUNTIME_DIR=${hermesPackage}/tools"
+  ];
+
   home.sessionVariables = {
     HERMES_RUNTIME_DIR = "${hermesPackage}/tools";
     WIKI_PATH = "/home/valentin/git/github/obsidian-vault/personal";
@@ -125,7 +138,6 @@ in
   '';
 
   home.file = {
-    ".hermes/config.yaml".source = ../../hermes/config.yaml;
     ".hermes/SOUL.md".source = ../../hermes/SOUL.md;
   };
 }
