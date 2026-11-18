@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+# Skip system SSH config files that appear untrusted inside the Hermes user namespace.
+export GIT_SSH_COMMAND='ssh -F /dev/null -o BatchMode=yes'
+
 repo="/home/valentin/.pi/agent/memory"
 lock="/home/valentin/.pi/agent/.memory-backup.lock"
 
