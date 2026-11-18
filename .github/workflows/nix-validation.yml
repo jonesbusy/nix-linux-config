@@ -46,6 +46,9 @@ jobs:
       - name: Check agent skill selections
         run: nix eval --impure --file tests/skills.nix
 
+      - name: Check Hermes agent-skills activation compatibility
+        run: nix eval --impure --file tests/agent-skills-rsync-activation.nix
+
       - name: Check flake
         run: nix flake check --no-build
 

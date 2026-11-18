@@ -87,6 +87,33 @@ in
     package = lib.mkForce hermesPackage;
     configFile = ../../hermes/config.yaml;
   };
+
+  home.activation.hermesAgentSkillsRsyncCompatibility =
+    (lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      rsync() {
+        local -a adjusted=()
+        local arg
+        for arg in "$@"; do
+          if [[ "$arg" == "--" ]]; then
+            adjusted+=(--no-owner --no-group --)
+          else
+            adjusted+=("$arg")
+          fi
+        done
+        command ${pkgs.rsync}/bin/rsync "''${adjusted[@]}"
+      }
+      export -f rsync
+    '')
+    // {
+      before = [ "agent-skills" ];
+    };
+
+  home.activation.hermesAgentSkillsRsyncCompatibilityCleanup =
+    lib.hm.dag.entryAfter [ "agent-skills" ]
+      ''
+        unset -f rsync
+      '';
+
   systemd.user.services.hermes-agent.Service.Environment = lib.mkAfter [
     "HERMES_RUNTIME_DIR=${hermesPackage}/tools"
     "HERMES_PRIVATE_DRIFT_PYTHON=${hermesPackage.hermesVenv}/bin/python3"

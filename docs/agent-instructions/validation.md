@@ -12,6 +12,7 @@ Nix only sees files Git tracks, so stage new or changed files first. Staging is 
 ```sh
 nix fmt -- --ci
 nix eval --impure --file tests/skills.nix
+nix eval --impure --file tests/agent-skills-rsync-activation.nix
 nix flake check --no-build
 nix build --no-link .#homeConfigurations.valentin.activationPackage
 ```
