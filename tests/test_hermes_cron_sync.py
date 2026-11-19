@@ -120,6 +120,9 @@ class HermesCronSyncTest(unittest.TestCase):
         self.assertIn("OBSIDIAN_VAULT_PATH", job["prompt"])
         self.assertRegex(job["id"], r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
         self.assertIn("gmail-to-obsidian-ingest", job["skills"])
+        self.assertIn("productivity/google-workspace", job["skills"])
+        self.assertEqual(job["skill"], "productivity/google-workspace")
+        self.assertNotIn("google-workspace", job["skills"])
         self.assertNotRegex(job["prompt"], r"/home/[^/]+")
 
     def test_private_drift_backup_is_script_only_and_imports_paused(self):

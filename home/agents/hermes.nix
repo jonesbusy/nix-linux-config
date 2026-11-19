@@ -7,6 +7,7 @@
   ...
 }:
 let
+  obsidianVaultPath = "/home/valentin/git/github/obsidian-vault/personal";
   hermesPackages = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system};
   pmNames = builtins.filter (name: lib.hasPrefix "pm-" name) (builtins.attrNames hermesPackages);
   pmPackages = lib.listToAttrs (
@@ -119,6 +120,7 @@ in
 
   systemd.user.services.hermes-agent.Service.Environment = lib.mkAfter [
     "HERMES_RUNTIME_DIR=${hermesPackage}/tools"
+    "OBSIDIAN_VAULT_PATH=${obsidianVaultPath}"
     "HERMES_PRIVATE_DRIFT_PYTHON=${hermesPackage.hermesVenv}/bin/python3"
     "HERMES_PRIVATE_DRIFT_BIN_PATH=${
       lib.makeBinPath [
@@ -130,8 +132,8 @@ in
 
   home.sessionVariables = {
     HERMES_RUNTIME_DIR = "${hermesPackage}/tools";
-    WIKI_PATH = "/home/valentin/git/github/obsidian-vault/personal";
-    OBSIDIAN_VAULT_PATH = "/home/valentin/git/github/obsidian-vault/personal";
+    WIKI_PATH = obsidianVaultPath;
+    OBSIDIAN_VAULT_PATH = obsidianVaultPath;
   };
 
   home.activation.hermesCopilotPlugin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
