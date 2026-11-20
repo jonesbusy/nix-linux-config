@@ -7,7 +7,7 @@
   "hideThinkingBlock": true,
   "quietStartup": "header",
   "packages": [
-    "npm:pi-cowboy@0.37.0",
+    "npm:pi-cowboy@0.39.0",
     "npm:pi-web-access@0.48.0",
     "npm:pi-polish@0.1.13",
     "npm:@dietrichgebert/ponytail@5.3.3",
