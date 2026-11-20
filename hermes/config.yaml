@@ -7,6 +7,13 @@ mcp_servers:
   qmd:
     command: /home/valentin/.nix-profile/bin/qmd
     args: ["mcp"]
+  swissgroceries:
+    command: npx
+    args: ["--yes", "@nicktcode/swissgroceries-mcp@0.12.0"]
+    connect_timeout: 120
+    timeout: 120
+    sampling:
+      enabled: false
 approvals:
   destructive_slash_confirm: false
 skills:
