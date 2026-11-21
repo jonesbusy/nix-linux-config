@@ -47,8 +47,8 @@
       ],
       "skill": "productivity/google-workspace",
       "no_agent": false,
-      "schedule": "every 240m",
-      "schedule_display": "every 240m",
+      "schedule": "every 60m",
+      "schedule_display": "every 60m",
       "repeat": { "times": null },
       "deliver": "local"
     },
@@ -63,8 +63,8 @@
       ],
       "skill": "productivity/google-workspace",
       "no_agent": false,
-      "schedule": "every 240m",
-      "schedule_display": "every 240m",
+      "schedule": "every 60m",
+      "schedule_display": "every 60m",
       "repeat": { "times": null },
       "deliver": "local"
     }

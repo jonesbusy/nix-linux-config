@@ -151,7 +151,7 @@ class HermesCronSyncTest(unittest.TestCase):
         definitions = json.loads(DEFINITIONS_PATH.read_text())
         job = next(item for item in definitions["jobs"] if item["id"] == "drive-obsidian-ingest")
         prompt = job["prompt"]
-        self.assertEqual(job["schedule"], "every 240m")
+        self.assertEqual(job["schedule"], "every 60m")
         self.assertEqual(
             job["skills"],
             ["productivity/google-workspace", "note-taking/obsidian", "drive-document-ingestion"],
