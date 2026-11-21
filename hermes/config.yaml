@@ -2,7 +2,7 @@ _config_version: 53
 _left_core_installed: [github-copilot]
 model:
   provider: copilot
-  default: gpt-6-luna
+  default: mai-code-2-flash
 mcp_servers:
   qmd:
     command: /home/valentin/.nix-profile/bin/qmd
