@@ -8,7 +8,7 @@ mcp_servers:
     command: /home/valentin/.nix-profile/bin/qmd
     args: ["mcp"]
   swissgroceries:
-    command: npx
+    command: /home/valentin/.nix-profile/bin/npx
     args: ["--yes", "@nicktcode/swissgroceries-mcp@0.12.0"]
     connect_timeout: 120
     timeout: 120
